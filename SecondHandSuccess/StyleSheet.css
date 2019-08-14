@@ -1,0 +1,65 @@
+﻿body {
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+#page
+{
+    margin:auto;
+    padding:2em;
+    font-family: Verdana,Verdana, Geneva, Tahoma, sans-serif;
+    width: 80%;
+   background-color: #253237;
+
+}
+
+header {
+    text-align:left;
+    padding: 2em;
+    color:#9bc4bc;
+}
+
+nav
+{
+    display:block;
+    font-size:150%;
+    margin-bottom:2em;
+    margin-left:3em;
+}
+
+
+
+menuitem
+{
+    margin:2em;
+    color:#9BC4BC;
+}
+
+/*#test.style{
+     margin:2em;
+     float:left;
+     padding:2em;
+     width:60%;
+     
+     /*border:solid;
+     border-color:red;
+}*/
+
+.yes{
+    
+    padding:2em;
+    margin-left:2em;
+    margin-bottom:2em;
+}
+
+
+
+
+
+
+
+
+
+
