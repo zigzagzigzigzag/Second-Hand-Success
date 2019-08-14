@@ -17,7 +17,7 @@
         
         <ItemTemplate>
             
-            <asp:Panel ID="test1" runat="server" CssClass="yes" Width="70%" >
+            <asp:Panel ID="panel" runat="server" CssClass="yes" Width="70%" >
                 <span> Module Code:
             <asp:Label ID="moduleCodeLabel" runat="server" Text='<%# Eval("moduleCode") %>' />
             <br />

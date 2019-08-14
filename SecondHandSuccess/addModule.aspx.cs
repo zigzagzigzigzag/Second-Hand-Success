@@ -18,7 +18,7 @@ public partial class addModule : System.Web.UI.Page
         var dataItem = e.Item as ListViewDataItem;
         if (dataItem != null)
         {
-            var innerPanel = dataItem.FindControl("test1") as Panel;
+            var innerPanel = dataItem.FindControl("panel") as Panel;
             if (innerPanel != null)
             {
                 var modCode = (string)ListView1.DataKeys[dataItem.DisplayIndex]["moduleCode"];
