@@ -39,8 +39,7 @@
         </InsertItemTemplate>
         <ItemTemplate>
             <asp:Panel ID="panelModule" runat="server" CssClass="classPanelModule" Width="70%">
-                <asp:Panel ID="innerLeftModule" runat="server" CssClass="LeftModule" >
-                     
+                <div id ="innerLeftModule" runat="server" class="LeftModule">
                      <span style="">Module Code:
             <asp:Label ID="moduleCodeLabel" runat="server" Text='<%# Eval("moduleCode") %>' />
             <br />
@@ -50,10 +49,12 @@
            Lecturer:
             <asp:Label ID="moduleLecturerLabel" runat="server" Text='<%# Eval("moduleLecturer") %>' />
            <br />
-                </asp:Panel>
-                <asp:Panel ID="innerRightModule" runat="server" CssClass="classRightModule">
+                         <br />
+                         <br />
+                </div>
+                <div id="innerRightModule" runat="server" class="classRightModule">
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                </asp:Panel>   
+                </div>   
             </asp:Panel>
             
 <br /><br /></span>

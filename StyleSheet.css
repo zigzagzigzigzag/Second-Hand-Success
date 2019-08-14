@@ -37,21 +37,25 @@ menuitem
     color:#9BC4BC;
 }
 
-/*#Content4
-{
-    margin-bottom:2em;
-}*/
+
 .classPanelModule
 {
    
     padding:1em;
+    margin-bottom:2em;
+    padding-bottom:3em;
 }
 
 
-.classRightModule
+.LeftModule
 {
-    float:right;
-    
+    margin-right:2em;
+   float:left;
+}
+
+
+#EditButton{
+    padding:2em;
 }
 
 
