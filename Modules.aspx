@@ -38,17 +38,22 @@
             <br /><br /></span>
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:Panel ID="panelModule" runat="server" CssClass="classPanelModule" Width="60%">
-                <span style="">moduleCode:
+            <asp:Panel ID="panelModule" runat="server" CssClass="classPanelModule" Width="70%">
+                <asp:Panel ID="innerLeftModule" runat="server" CssClass="LeftModule" >
+                     
+                     <span style="">Module Code:
             <asp:Label ID="moduleCodeLabel" runat="server" Text='<%# Eval("moduleCode") %>' />
             <br />
-            moduleName:
+            Name:
             <asp:Label ID="moduleNameLabel" runat="server" Text='<%# Eval("moduleName") %>' />
             <br />
-            moduleLecturer:
+           Lecturer:
             <asp:Label ID="moduleLecturerLabel" runat="server" Text='<%# Eval("moduleLecturer") %>' />
-            <br />
-            <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+           <br />
+                </asp:Panel>
+                <asp:Panel ID="innerRightModule" runat="server" CssClass="classRightModule">
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                </asp:Panel>   
             </asp:Panel>
             
 <br /><br /></span>

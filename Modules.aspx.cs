@@ -18,10 +18,12 @@ public partial class Modules : System.Web.UI.Page
         if (dataItem != null)
         {
             var innerPanel = dataItem.FindControl("panelModule") as Panel;
+            //var list = dataItem.FindControl("innerLeftModule") as Panel;
             if (innerPanel != null)
             {
                 var modCode = (string)tableModule.DataKeys[dataItem.DisplayIndex]["moduleCode"];
                 innerPanel.BackColor = System.Drawing.ColorTranslator.FromHtml("#5C6B73");
+                //innerPanel.Height = list.Height;
             }
         }
     }

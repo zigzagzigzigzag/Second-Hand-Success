@@ -16,9 +16,9 @@
             <nav>
                    <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticDisplayLevels="2" StaticMenuItemStyle-HorizontalPadding="2em" StaticSelectedStyle-BorderColor="Silver" StaticHoverStyle-BorderStyle="Solid" StaticHoverStyle-BorderColor="Silver">
                         <Items>
-                            <asp:MenuItem NavigateUrl="~/addModule.aspx" Text="Home" Value="addModule"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/addModule.aspx" Text="Listings"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/addModule.aspx" Text="Modules"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Home" Value="addModule"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Listings"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Modules"></asp:MenuItem>
                         </Items>
                         <StaticHoverStyle BackColor="" BorderStyle="Solid" BorderColor="#E0FBFC"></StaticHoverStyle>
                         <StaticMenuItemStyle BackColor="Black" ForeColor="#E0fbfc" HorizontalPadding="2em" />
