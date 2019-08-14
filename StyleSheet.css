@@ -37,14 +37,18 @@ menuitem
     color:#9BC4BC;
 }
 
-
-
-.yes{
-    
-    padding:2em;
-    margin-left:2em;
-    margin-bottom:2em;
+tableModule th ,td
+{
+    padding:1em;
+    margin-right:2em;
 }
+
+.classPannelModule
+{
+    margin:2em;
+}
+
+
 
 
 
