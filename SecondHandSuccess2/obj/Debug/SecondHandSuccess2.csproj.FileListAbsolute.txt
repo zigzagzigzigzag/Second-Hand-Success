@@ -78,7 +78,6 @@ C:\Users\claud\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\Entit
 C:\Users\claud\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\EntityFramework.SqlServer.dll
 C:\Users\claud\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\EntityFramework.xml
 C:\Users\claud\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\EntityFramework.SqlServer.xml
-C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csprojAssemblyReference.cache
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csproj.CoreCompileInputs.cache
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.dll
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.pdb

@@ -22,7 +22,7 @@ namespace SecondHandSuccess2.Models
 
             modelBuilder.Entity<Listing>()
                 .Property(e => e.listingDate)
-                .IsUnicode(false);
+                /*.IsUnicode(false)*/;
         }
     }
 }
