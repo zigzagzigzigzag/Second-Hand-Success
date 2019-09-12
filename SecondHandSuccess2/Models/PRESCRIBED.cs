@@ -6,8 +6,8 @@ namespace SecondHandSuccess2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Listing")]
-    public partial class Listing
+    [Table("PRESCRIBED")]
+    public partial class PRESCRIBED
     {
         [Key]
         [Column(Order = 0)]
@@ -16,20 +16,14 @@ namespace SecondHandSuccess2.Models
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(13)]
-        public string personIDNumber { get; set; }
-
         [StringLength(50)]
-        public string listingCondition { get; set; }
+        public string moduleCode { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? listingDate { get; set; }
-
-        [StringLength(50)]
-        public string listingPrice { get; set; }
+        public DateTime? prescribedDate { get; set; }
 
         public virtual BOOK BOOK { get; set; }
 
-        public virtual PERSON PERSON { get; set; }
+        public virtual Module Module { get; set; }
     }
 }
