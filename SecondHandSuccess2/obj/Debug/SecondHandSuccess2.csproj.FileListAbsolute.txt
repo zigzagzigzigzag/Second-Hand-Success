@@ -157,3 +157,4 @@ C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\New
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\Antlr3.Runtime.pdb
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csproj.CopyComplete
+C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csprojAssemblyReference.cache

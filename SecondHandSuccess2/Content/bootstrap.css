@@ -4351,8 +4351,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 16px;
+  font-size: 35px;
   line-height: 20px;
+  font-family: Calibri;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4376,8 +4377,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
   background-color: transparent;
   background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
 }
 .navbar-toggle:focus {
   outline: 0;
@@ -4398,6 +4397,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav {
   margin: 7.5px -15px;
+  font-family: Calibri;
+  font-size: 20px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -5036,7 +5037,8 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #253237;
+  border-top-color: #253237;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5044,11 +5046,13 @@ a.badge:focus {
 }
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 21px;
+  font-size: 50px;
   font-weight: 200;
+  font-family:Calibri;
+  color: #9BC4BC
 }
 .jumbotron > hr {
-  border-top-color: #d5d5d5;
+  border-top-color: #253237;
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
