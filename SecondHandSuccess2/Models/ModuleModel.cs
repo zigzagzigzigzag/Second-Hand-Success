@@ -8,7 +8,7 @@ namespace SecondHandSuccess2.Models
     public partial class ModuleModel : DbContext
     {
         public ModuleModel()
-            : base("name=ModuleModel")
+            : base("name=ModuleModel1")
         {
         }
 
@@ -16,6 +16,10 @@ namespace SecondHandSuccess2.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Module>()
+                .Property(e => e.moduleCode)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Module>()
                 .Property(e => e.moduleName)
                 .IsUnicode(false);

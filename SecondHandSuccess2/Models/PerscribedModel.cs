@@ -8,7 +8,7 @@ namespace SecondHandSuccess2.Models
     public partial class PerscribedModel : DbContext
     {
         public PerscribedModel()
-            : base("name=PerscribedModel")
+            : base("name=PerscribedModel1")
         {
         }
 
@@ -18,7 +18,7 @@ namespace SecondHandSuccess2.Models
         {
             modelBuilder.Entity<Perscribed>()
                 .Property(e => e.moduleCode)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Perscribed>()
                 .Property(e => e.perscribedDate)

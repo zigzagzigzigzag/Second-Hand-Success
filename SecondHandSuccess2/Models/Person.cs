@@ -6,12 +6,23 @@ namespace SecondHandSuccess2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Person")]
-    public partial class Person
+    [Table("PERSON")]
+    public partial class PERSON
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PERSON()
+        {
+            Listings = new HashSet<Listing>();
+        }
+
         [Key]
+<<<<<<< HEAD
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PersonIDNumber { get; set; }
+        public long PersonIDNumber { get; set; }
+=======
+        [StringLength(13)]
+        public string PersonIDNumber { get; set; }
+>>>>>>> 296f66aa2c8b4b28d1b13be35e9a4c9007ecade2
 
         [StringLength(50)]
         public string PersonName { get; set; }
@@ -36,5 +47,8 @@ namespace SecondHandSuccess2.Models
 
         [StringLength(50)]
         public string PersonRating { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Listing> Listings { get; set; }
     }
 }

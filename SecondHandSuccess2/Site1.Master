@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SecondHandSuccess2.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Second Hand Success</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="tabTitle" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="page">
+        <header>
+            <nav>
+                   <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticDisplayLevels="2" StaticMenuItemStyle-HorizontalPadding="2em" StaticSelectedStyle-BorderColor="Silver" StaticHoverStyle-BorderStyle="Solid" StaticHoverStyle-BorderColor="Silver">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Home" Value="addModule"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Listings"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Module.aspx" Text="Modules"></asp:MenuItem>
+                        </Items>
+                        <StaticHoverStyle BackColor="" BorderStyle="Solid" BorderColor="#E0FBFC"></StaticHoverStyle>
+                        <StaticMenuItemStyle BackColor="Black" ForeColor="#E0fbfc" HorizontalPadding="2em" />
+                        <StaticSelectedStyle BackColor="#5c6b73" />
+                    </asp:Menu>
+                </nav>
+            <h1>
+                <asp:ContentPlaceHolder id="heading" runat="server">
+                </asp:ContentPlaceHolder>
+            </h1>
+        </header>
+        <section id="mainContainer">
+             
+            <section id="main">
+                    <asp:ContentPlaceHolder ID="content" runat="server">
+                    </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="end" runat="server">
+                    </asp:ContentPlaceHolder>
+                </section>
+        </section>
+    </div>
+    </form>
+</body>
+</html>

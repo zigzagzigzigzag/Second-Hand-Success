@@ -10,17 +10,26 @@ namespace SecondHandSuccess2.Models
     public partial class Listing
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long bookISBN { get; set; }
+        [Column(Order = 0)]
+        [StringLength(13)]
+        public string bookISBN { get; set; }
 
-        public long? personIDNumber { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(13)]
+        public string personIDNumber { get; set; }
 
         [StringLength(50)]
         public string listingCondition { get; set; }
 
-        [StringLength(50)]
-        public string listingDate { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? listingDate { get; set; }
 
-        public int? listingPrice { get; set; }
+        [StringLength(50)]
+        public string listingPrice { get; set; }
+
+        public virtual BOOK BOOK { get; set; }
+
+        public virtual PERSON PERSON { get; set; }
     }
 }

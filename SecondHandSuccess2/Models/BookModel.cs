@@ -8,27 +8,27 @@ namespace SecondHandSuccess2.Models
     public partial class BookModel : DbContext
     {
         public BookModel()
-            : base("name=BookModel")
+            : base("name=BookModel1")
         {
         }
 
-        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<BOOK> Books { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<BOOK>()
                 .Property(e => e.bookName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<BOOK>()
                 .Property(e => e.bookEdition)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<BOOK>()
                 .Property(e => e.bookAuthor)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<BOOK>()
                 .Property(e => e.bookPublisher)
                 .IsUnicode(false);
         }

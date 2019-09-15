@@ -8,7 +8,7 @@ namespace SecondHandSuccess2.Models
     public partial class ListingModel : DbContext
     {
         public ListingModel()
-            : base("name=ListingModel")
+            : base("name=ListingModel1")
         {
         }
 
@@ -22,7 +22,7 @@ namespace SecondHandSuccess2.Models
 
             modelBuilder.Entity<Listing>()
                 .Property(e => e.listingDate)
-                .IsUnicode(false);
+                /*.IsUnicode(false)*/;
         }
     }
 }

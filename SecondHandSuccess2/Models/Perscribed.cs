@@ -13,7 +13,7 @@ namespace SecondHandSuccess2.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long bookISBN { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string moduleCode { get; set; }
 
         [StringLength(10)]
