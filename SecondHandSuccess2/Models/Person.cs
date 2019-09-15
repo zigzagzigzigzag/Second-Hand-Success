@@ -17,7 +17,6 @@ namespace SecondHandSuccess2.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long PersonIDNumber { get; set; }
         [StringLength(13)]
         public string PersonIDNumber { get; set; }
 

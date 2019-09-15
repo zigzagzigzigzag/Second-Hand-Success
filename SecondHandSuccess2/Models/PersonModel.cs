@@ -35,6 +35,7 @@ namespace SecondHandSuccess2.Models
             modelBuilder.Entity<PERSON>()
                 .Property(e => e.PersonUserName)
                 .IsUnicode(false);
+          
 
             modelBuilder.Entity<PERSON>()
                 .Property(e => e.PersonPassword)

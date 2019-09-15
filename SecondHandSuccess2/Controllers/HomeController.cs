@@ -13,18 +13,20 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult LogIn()
         {
-            ViewBag.Message = "Your application description page.";
-
+            //if (objUserLogin.PersonUserName == "debugonweb" && objUserLogin.PersonPassword == "debugonweb")
+            //    return RedirectToAction("WelcomePage");
+            //else
+            //{
+            //   //objUserLogin.Message = "Invalid UserName/Password";
+            //    return View(LogIn);
+            //}
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+       // public ActionResult About(){ViewBag.Message = "Your application description page.";return View();}
 
-            return View();
-        }
+       // public ActionResult Contact(){ViewBag.Message = "Your contact page.";return View();}
     }
 }

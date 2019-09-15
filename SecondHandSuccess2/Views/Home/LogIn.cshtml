@@ -1,0 +1,47 @@
+﻿@model SecondHandSuccess2.Models.PERSON
+
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LogIn</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    if (Model != null)
+    {
+        <h1>
+           
+        </h1>
+    }
+
+<fieldset>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.PersonUserName)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.PersonUserName)
+        @Html.ValidationMessageFor(model => model.PersonUserName)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.PersonPassword)
+    </div>
+    <div class="editor-field">
+        @Html.PasswordFor(model => model.PersonPassword)
+        @Html.ValidationMessageFor(model => model.PersonPassword)
+    </div>
+
+    <p>
+        <input type="submit" value="Log In"/>
+    </p>
+    <p>
+        <input type="button" value="Sign Up"
+    </p>
+</fieldset>
+}
+
