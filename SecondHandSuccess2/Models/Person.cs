@@ -16,13 +16,10 @@ namespace SecondHandSuccess2.Models
         }
 
         [Key]
-<<<<<<< HEAD
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PersonIDNumber { get; set; }
-=======
         [StringLength(13)]
         public string PersonIDNumber { get; set; }
->>>>>>> 296f66aa2c8b4b28d1b13be35e9a4c9007ecade2
 
         [StringLength(50)]
         public string PersonName { get; set; }
