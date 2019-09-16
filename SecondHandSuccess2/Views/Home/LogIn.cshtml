@@ -2,48 +2,54 @@
 
 @{
     ViewBag.Title = "LogIn";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="LoginHeading">Log In</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    @using (Html.BeginForm(new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-label-group text-center">
+                            @Html.TextBoxFor(model => model.PersonUserName, new { @class = "form-control", @placeholder = "Username", @style = "margin:auto" })
+                            @Html.ValidationMessageFor(model => model.PersonUserName)
+                        </div>
+                        <div class="form-label-group">
+                            @Html.PasswordFor(model => model.PersonPassword, new { @class = "form-control", @placeholder = "Password", @style = "margin:auto" })
+                            @Html.ValidationMessageFor(model => model.PersonPassword)
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    if (Model != null)
-    {
-        <h1>
-           
-        </h1>
+                        <hr class="my-4">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+        .form-control {
+        border-color: #d4d4d4 !important;
+        background-color: rgb(243, 243, 243);
     }
 
-<fieldset>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.PersonUserName)
-    </div>
-    <div class="editor-field">
-        @Html.TextBoxFor(model => model.PersonUserName)
-        @Html.ValidationMessageFor(model => model.PersonUserName)
-    </div>
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.PersonPassword)
-    </div>
-    <div class="editor-field">
-        @Html.PasswordFor(model => model.PersonPassword)
-        @Html.ValidationMessageFor(model => model.PersonPassword)
-    </div>
-    <br/>
-    <div float="Right">
-        <p>
-            <input type="submit" value="Log In" />
-        </p>
-        <p>
-            <input type="button" value="Sign Up" />
-        </p>
-    </div>
-</fieldset>
-}
+    .form-label-group {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .btn{
+        max-width: 280px;
+        margin: auto;
+        background-color:#9bc4bc;
+        border-color:#9bc4bc;
+    }
+</style>
 

@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
     background-color: #253237;
 }
@@ -46,11 +46,8 @@ header {
     color: #9bc4bc;
 }
 
-nav {
-    display: block;
-    font-size: 140%;
-    margin-bottom: 2em;
-    margin-left: 3em;
+li.nav-item {
+    margin: 0px 10px;
 }
 
 
@@ -84,4 +81,75 @@ menuitem {
 
 .LoginHeading{
     color: #9bc4bc;
+}
+
+
+@media (min-width: 0px) {
+    .container {
+        max-width: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+    }
+}
+
+
+.card {
+    border: 1px solid rgba(179, 179, 179, 0.75);
+    border-radius: 10px;
+    background-color: #bebebe;
+}
+
+
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 2rem 2rem 0.5rem rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    margin: auto;
+    background-color: lightgrey;
+}
+
+    .card-signin .card-title {
+        margin-bottom: 2rem;
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
+
+    .card-signin .card-body {
+        padding: 2rem;
+    }
+
+.form-signin {
+    width: 100%;
+}
+
+    .form-signin .btn {
+        font-size: 80%;
+        border-radius: 5rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        padding: 1rem;
+        transition: all 0.2s;
+    }
+
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 1px red solid;
+}
+
+h1{
+    color:white;
 }

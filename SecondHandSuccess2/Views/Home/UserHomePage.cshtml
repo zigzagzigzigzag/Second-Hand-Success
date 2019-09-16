@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <h1 class="h1 col-md-6">My Listings</h1>
+        <button class="col-md-1 btn btn-light justify-content-end m-auto" type="button" id="addListItem" style="margin-right:0px !important">Add</button>
+        <input class="form-control mr-sm-2 col-md-2 justify-content-center m-auto" type="search" placeholder="Search" aria-label="Search" onchange="searchList()" />
+        <div class="col-md-1" style="color:white; margin-top:auto; margin-bottom:auto;">
+            <div class="custom-control custom-radio">
+                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" />
+                <label class="custom-control-label" for="searchGroup1">Users</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup2" />
+                <label class="custom-control-label" for="searchGroup2">Listings</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup3" />
+                <label class="custom-control-label" for="searchGroup3">Modules</label>
+            </div>
+        </div>
+    </div>
+<div class="row" style="margin:20px">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col" style="border-top:none;">Textbook Name</th>
+                <th scope="col" style="border-top:none;">Condition</th>
+                <th scope="col" style="border-top:none;">Date posted</th>
+                <th scope="col" style="border-top:none;">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>R5.00</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>R10.00</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    .h1{
+        font-size:4.5rem
+    }
+    .btn{
+        max-height:40px;
+    }
+
+    table{
+        border-radius:10px;
+    }
+</style>
