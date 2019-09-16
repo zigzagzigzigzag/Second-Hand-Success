@@ -10,7 +10,7 @@
         <input class="form-control mr-sm-2 col-md-2 justify-content-center m-auto" type="search" placeholder="Search" aria-label="Search" onchange="searchList()" />
         <div class="col-md-1" style="color:white; margin-top:auto; margin-bottom:auto;">
             <div class="custom-control custom-radio">
-                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" />
+                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" onclick="LoadList(1)"/>
                 <label class="custom-control-label" for="searchGroup1">Users</label>
             </div>
             <div class="custom-control custom-radio">
@@ -31,22 +31,29 @@
                 <th scope="col" style="border-top:none;">Condition</th>
                 <th scope="col" style="border-top:none;">Date posted</th>
                 <th scope="col" style="border-top:none;">Price</th>
+                <th scope="col" style="border-top:none"></th>
             </tr>
         </thead>
         <tbody>
+            @foreach (var item in ViewBag.Listings)
+            {
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>R5.00</td>
+                <td>
+                    @item.BOOK.bookName
+                </td>
+                <td>
+                    @item.listingCondition
+                </td>
+                <td>
+                    @item.listingDate
+                </td>
+                <td>
+                    @item.listingPrice
+                </td>
+                <td><button type="button" class="btn btn-light">Edit</button></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>R10.00</td>
-            </tr>
-        </tbody>
+            }
+            </tbody>
     </table>
 </div>
 <style>
@@ -61,3 +68,6 @@
         border-radius:10px;
     }
 </style>
+<script>
+
+</script>

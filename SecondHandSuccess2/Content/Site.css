@@ -153,3 +153,8 @@ menuitem {
 h1{
     color:white;
 }
+
+.btn {
+    background-color: #9bc4bc;
+    border-color: #9bc4bc;
+}

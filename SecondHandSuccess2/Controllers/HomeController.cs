@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SecondHandSuccess2.Models;
 
 namespace SecondHandSuccess2.Controllers
 {
@@ -25,8 +26,11 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
+        Model model = new Model();
+
         public ActionResult UserHomePage()
         {
+            ViewBag.Listings = model.Listings;
             return View();
         }
 
