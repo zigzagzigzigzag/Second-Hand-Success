@@ -6836,3 +6836,61 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/*Admin Home* Start*/
+
+    #adminHomeContainer{
+    display:flex;
+}
+
+.adminHomeColumnRight{
+    flex:55%;
+    /*float:right;*/
+}
+.adminHomeColumnLeft{
+    flex:20%;
+    float:left;
+}
+
+.tableA th{
+   
+    background-color:#253237;
+    padding:2em;
+}
+.tableItem{
+    background-color:#5c6B73;  
+    margin:2em;
+    border:thick;
+    border-width:10px;
+    border-color:#253237;
+    padding:2em;
+    border-style:solid;
+}
+
+#moduleStart{
+    display:flex;
+}
+
+
+
+#addButton{
+    color:black;
+   
+    height:50%;
+}
+
+.Button{
+    color:black;
+    margin:1em;
+}
+
+#dataHeadingModule{
+    color:#E0FBFC;
+    float:left;
+}
+
+#dataHeadingUser{
+    color:#E0FBFC;
+}
+
+/*Admin home end*/
