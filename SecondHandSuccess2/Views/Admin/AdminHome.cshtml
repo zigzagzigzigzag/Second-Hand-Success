@@ -1,86 +1,88 @@
-﻿
-@{
-    ViewBag.Title = "AdminHome";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿<div id="adminHome">
 
-<h2 class="=typeHeading">ADMINISTRATOR</h2>
-<div id="adminHomeContainer">
-    <div class="adminHomeColumnLeft">
-        <div id="moduleStart">
-            <h3 id="dataHeadingModule">MODULES</h3>
-            <input type="button" value="Add" id="addButton" />
+    @{
+        ViewBag.Title = "AdminHome";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2 class="=typeHeading">ADMINISTRATOR</h2>
+    <div id="adminHomeContainer">
+        <div class="adminHomeColumnLeft">
+            <div id="moduleStart">
+                <h3 id="dataHeadingModule">MODULES</h3>
+                <input type="button" value="Add" id="addButton" />
+            </div>
+
+            <table class="tableA">
+                <tr>
+                    <th>
+                        Module Code
+                    </th>
+                    <th>
+                        Lecturer
+                    </th>
+                    <th>
+                        Module Name
+                    </th>
+                </tr>
+                @foreach (var item in ViewBag.Modules)
+            {
+                    <tr class="tableItem">
+                        <td>
+                            @item.moduleCode
+                        </td>
+                        <td>
+                            @item.moduleLecturer
+                        </td>
+                        <td>
+                            @item.moduleName
+                        </td>
+                        <td>
+                            <input type="button" value="Edit" class="Button" />
+                        </td>
+                    </tr>
+                }
+            </table>
         </div>
+        <div class="=adminHomeColumnRight">
+            <h3 id="dataHeadingUser">USERS</h3>
+            <table class="tableA">
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Surname
+                    </th>
+                    <th>
+                        Rating
+                    </th>
+                </tr>
+                @foreach (var item in ViewBag.People)
+            {
+                    <tr class="tableItem">
+                        <td>
+                            @item.PersonUserName
+                        </td>
+                        <td>
+                            @item.PersonName
+                        </td>
+                        <td>
+                            @item.PersonSurname
+                        </td>
+                        <td>
+                            @item.PersonRating
+                        </td>
+                        <td>
+                            <input type="button" value="Remove" class="Button" />
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 
-        <table class="tableA">
-            <tr>
-                <th>
-                    Module Code
-                </th>
-                <th>
-                    Lecturer
-                </th>
-                <th>
-                    Module Name
-                </th>
-            </tr>
-            @foreach (var item in ViewBag.Modules)
-            {
-                <tr class="tableItem">
-                    <td>
-                        @item.moduleCode
-                    </td>
-                    <td>
-                        @item.moduleLecturer
-                    </td>
-                    <td>
-                        @item.moduleName
-                    </td>
-                    <td>
-                        <input type="button" value="Edit" class="Button" />     
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-    <div class="=adminHomeColumnRight">
-        <h3 id="dataHeadingUser">USERS</h3>
-        <table class="tableA">
-            <tr>
-                <th>
-                    Username
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Surname
-                </th>
-                <th>
-                    Rating
-                </th>
-            </tr>
-            @foreach (var item in ViewBag.People)
-            {
-                <tr class="tableItem">
-                    <td>
-                        @item.PersonUserName
-                    </td>
-                    <td>
-                        @item.PersonName
-                    </td>
-                    <td>
-                        @item.PersonSurname
-                    </td>
-                    <td>
-                        @item.PersonRating
-                    </td>
-                    <td>
-                        <input type="button" value="Remove" class="Button" />
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
 </div>
-

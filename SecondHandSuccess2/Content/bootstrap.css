@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #fff;
+ background-color:#253237;
 }
 input,
 button,
@@ -6852,6 +6852,9 @@ button.close {
     float:left;
 }
 
+.tableA{
+    color:#FFFFFF;
+}
 .tableA th{
    
     background-color:#253237;
