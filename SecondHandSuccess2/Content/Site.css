@@ -1,8 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #253237;
 }
 
+footer{
+    color: #9bc4bc;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -21,4 +25,63 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#page {
+    margin: auto;
+    padding: 2em;
+    font-family: Verdana,Verdana, Geneva, Tahoma, sans-serif;
+    width: 80%;
+    background-color: #253237;
+}
+
+header {
+    text-align: left;
+    padding: 2em;
+    color: #9bc4bc;
+}
+
+nav {
+    display: block;
+    font-size: 140%;
+    margin-bottom: 2em;
+    margin-left: 3em;
+}
+
+
+
+menuitem {
+    margin: 2em;
+    color: #9BC4BC;
+}
+
+
+.classPanelModule {
+    padding: 1em;
+    margin-bottom: 2em;
+    padding-bottom: 3em;
+}
+
+
+.LeftModule {
+    margin-right: 2em;
+    float: left;
+}
+
+
+#EditButton {
+    padding: 2em;
+}
+
+.editor-label{
+    color: #9bc4bc;
+}
+
+.LoginHeading{
+    color: #9bc4bc;
 }

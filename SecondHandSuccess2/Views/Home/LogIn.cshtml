@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>LogIn</h2>
+<h2 class="LoginHeading">Log In</h2>
 
 @using (Html.BeginForm())
 {
@@ -35,13 +35,15 @@
         @Html.PasswordFor(model => model.PersonPassword)
         @Html.ValidationMessageFor(model => model.PersonPassword)
     </div>
-
-    <p>
-        <input type="submit" value="Log In"/>
-    </p>
-    <p>
-        <input type="button" value="Sign Up"
-    </p>
+    <br/>
+    <div float="Right">
+        <p>
+            <input type="submit" value="Log In" />
+        </p>
+        <p>
+            <input type="button" value="Sign Up" />
+        </p>
+    </div>
 </fieldset>
 }
 

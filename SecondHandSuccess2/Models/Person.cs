@@ -32,9 +32,12 @@ namespace SecondHandSuccess2.Models
         [StringLength(50)]
         public string PersonEmail { get; set; }
 
+
+        [Display(Name = "User Name")]
         [StringLength(50)]
         public string PersonUserName { get; set; }
 
+        [Display(Name = "Password")]
         [StringLength(50)]
         public string PersonPassword { get; set; }
 
