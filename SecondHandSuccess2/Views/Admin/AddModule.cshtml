@@ -40,7 +40,7 @@
                                     </td>
                                     <td>
                                         <div class="form-label-group text-center">
-                                            @Html.TextBoxFor(model => model.moduleCode, new { @class = "form-control", @style = "margin:auto" })
+                                            @Html.TextBoxFor(model => model.moduleCode, new { @class = "dropdown" })
                                             @Html.ValidationMessageFor(model => model.moduleLecturer)
                                         </div>
                                     </td>
@@ -52,10 +52,8 @@
                                     <td>
                                         <div class="form-label-group text-center">
                                             @Html.DropDownList("PersonIDNumber", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName","PersonSurname", new { @class = "form-control"}))
-                                            @*@Html.TextBoxFor(model => model.moduleLecturer, new { @class = "form-control", @style = "margin:auto" })*@
+                                           
                                             @Html.ValidationMessageFor(model => model.moduleLecturer)
-
-                                            
                                         </div>
                                     </td>
                                 </tr>

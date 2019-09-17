@@ -12,29 +12,44 @@
 </head>
 <body>
     <div class="row">
-        <h1 class="h1 col-md-6">Edit Listing</h1>
+        <h1 class="h1 col-md-12">Edit Listing</h1>
     </div>
-    <div class="row">
-        <h2 class="h2 col-md-6 text-white">Listing Information</h2>
-        <label class="basicLabel text-white"> Textbook Name </label>
-        <textarea></textarea>
-        <label class="basicLabel text-white"> Asking Price </label>
-        <textarea></textarea>
+    <div class="col-md-12" style="color:white; margin-top:auto; margin-bottom:auto; padding-bottom:5em; background-color: #5c6b73">
+        <h2 class="h2 col-md-12 text-white">Listing Information</h2>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbook" />
+            <label class="custom-control-label" for="textbook">Textbook Name</label>
+        </div>
+        <div>
+            <input type="number" class="h2 col-md-3 text-white" id="textbookPrice" />
+            <label class="custom-control-label" for="textbookPrice">Asking Price</label>
+        </div>
         <button>Confirm</button>
         <button>Delete</button>
     </div>
-    <div class="row">
-        <h2 class="h2 col-md-6 text-white">Add a New Textbook</h2>
-        <label class="basicLabel text-white"> Textbook Name: </label>
-        <textarea></textarea>
-        <label class="basicLabel text-white"> ISBN: </label>
-        <textarea></textarea>
-        <label class="basicLabel text-white"> Publisher: </label>
-        <textarea></textarea>
-        <label class="basicLabel text-white"> Author: </label>
-        <textarea></textarea>
-        <label class="basicLabel text-white"> Edition: </label>
-        <></>
+
+    <div class="col-md-12" style="color:white; margin-top:auto; margin-bottom:auto;background-color: #5c6b73">
+        <h2 class="h2 col-md-12 text-white">Textbook Information</h2>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbookName" />
+            <label class="custom-control-label" for="textbookName">Textbook Name</label>
+        </div>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbookISBN" />
+            <label class="custom-control-label" for="textbookISBN">ISBN Number:</label>
+        </div>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbookPublisher" />
+            <label class="custom-control-label" for="textbookPublisher">Publisher:</label>
+        </div>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbookAuthor" />
+            <label class="custom-control-label" for="textbookAuthor">Author:</label>
+        </div>
+        <div>
+            <input type="text" class="h2 col-md-3 text-white" id="textbookEdition" />
+            <label class="custom-control-label" for="textbookEdition">Edition:</label>
+        </div>
         <button>Add</button>
         <button>Delete</button>
     </div>
