@@ -1,0 +1,54 @@
+﻿@model SecondHandSuccess2.Models.PERSON
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    @using (Html.BeginForm("LogOn", "Home", FormMethod.Post,new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-label-group text-center">
+                            @Html.TextBoxFor(model => model.PersonUserName, new { @class = "form-control", @placeholder = "Username", @style = "margin:auto" })
+                            @Html.ValidationMessageFor(model => model.PersonUserName)
+                        </div>
+                        <div class="form-label-group">
+                            @Html.PasswordFor(model => model.PersonPassword, new { @class = "form-control", @placeholder = "Password", @style = "margin:auto" })
+                            @Html.ValidationMessageFor(model => model.PersonPassword)
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                        <button onclick="" class="btn btn-lg btn-primary btn-block text-uppercase" type="button">Sign up</button>
+
+                        <hr class="my-4">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+        .form-control {
+        border-color: #d4d4d4 !important;
+        background-color: rgb(243, 243, 243);
+    }
+
+
+    .form-label-group {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .btn{
+        max-width: 280px;
+        margin: auto;
+
+    }
+</style>
+
