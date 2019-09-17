@@ -40,7 +40,6 @@ namespace SecondHandSuccess2.Controllers
                     people.Add(user);
                 }
             }
-
             ViewBag.lecturers = people;
             return View();
         }

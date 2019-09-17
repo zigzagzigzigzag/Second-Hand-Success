@@ -45,7 +45,7 @@ namespace SecondHandSuccess2.Controllers
                 ViewBag.User = Session["User"];
                 return View();
             }
-            else
+            else 
             {
                 return RedirectToAction("LogIn", "Home");
             }
