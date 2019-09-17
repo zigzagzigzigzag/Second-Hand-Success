@@ -22,7 +22,7 @@ namespace SecondHandSuccess2.Controllers
         }
 
         Model model = new Model();
-
+          
   
         public ActionResult LecturerHomePage()
         {
@@ -31,7 +31,7 @@ namespace SecondHandSuccess2.Controllers
                 ViewBag.Prescribed = model.PRESCRIBEDs;
                 return View();
             }
-            else
+            else 
             {
                 return RedirectToAction("LogIn", "Home");
             }
