@@ -11,7 +11,7 @@ namespace SecondHandSuccess2.Controllers
 {
     public class AdminController : Controller
     {
-       
+
         Model model = new Model();
 
         public ActionResult AdminHome()
@@ -24,9 +24,53 @@ namespace SecondHandSuccess2.Controllers
             }
             else
             {
+
                 return RedirectToAction("LogIn", "Home");
             }
-           
+
+        }
+
+        public ActionResult AddModule()
+        {         
+            List<PERSON> people = new List<PERSON>();
+            foreach (var user in model.People)
+            {
+                if (user.PersonType.Equals("Lecturer"))
+                {
+                    people.Add(user);
+                }
+            }
+
+            ViewBag.lecturers = people;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult addModule()
+        {
+            return RedirectToAction("AdminHome", "Admin");
+        }
+
+        [HttpPost]
+        public ActionResult add()
+        {
+            return RedirectToAction("AddModule", "Admin");
+        }
+
+        public ActionResult getLecturers()
+        {
+            List<PERSON> people = new List<PERSON>();         
+            foreach (var user in model.People)
+            {
+                people.Add(user);
+            //    if (user.PersonType.Equals("Lecturer"))
+            //    {
+            //        people.Add(user);
+            //    }
+            }
+
+            ViewBag.lecturers = people;
+            return View();
         }
 
 

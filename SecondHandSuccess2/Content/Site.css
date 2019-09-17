@@ -158,3 +158,83 @@ h1{
     background-color: #9bc4bc;
     border-color: #9bc4bc;
 }
+
+
+/*AdminHome Start*/
+#adminHomeContainer{
+    display:flex;
+}
+
+.adminHomeColumnRight{
+    flex:55%;
+}
+.adminHomeColumnLeft{
+    flex:20%;
+    float:left;
+}
+
+.tableA th{
+   
+    background-color:#253237;
+    padding:2em;
+}
+.tableItem{
+    background-color:#5c6B73;  
+    margin:2em;
+    border:thick;
+    border-width:10px;
+    border-color:#253237;
+    padding:2em;
+    border-style:solid;
+}
+
+#moduleStart{
+    display:flex;
+}
+
+#addButton{
+    color:black;
+   
+    height:50%;
+}
+
+#dataHeadingModule{
+    color:#E0FBFC;
+    float:left;
+}
+
+#dataHeadingUser{
+    color:#E0FBFC;
+}
+/*AdminHome End*/
+
+/*Add Module start*/
+
+.tableModule{
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+#tableModule{
+    color:#E0FBFC;
+    background-color:#5C6B73;
+}
+
+#addModuleTitle{
+    color:#9BC4BC;
+}
+
+#moduleInformation{
+    color:#E0FBFC;
+}
+
+#addModuleContainer{
+   background-color:#5C6B73;
+   }
+
+
+
+
+/*Add module end*/

@@ -23,18 +23,7 @@ namespace SecondHandSuccess2.Controllers
 
         Model model = new Model();
 
-        public ActionResult UserHomePage()
-        {
-            if (Session["User"] != null)
-            {
-                ViewBag.Listings = model.Listings;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("LogIn", "Home");
-            }
-        }
+  
         public ActionResult LecturerHomePage()
         {
             if (Session["User"] != null)
