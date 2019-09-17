@@ -50,7 +50,9 @@
                 <td>
                     @item.listingPrice
                 </td>
-                <td><button type="button" class="btn btn-light">Edit</button></td>
+                <td>
+                    <a href='https://localhost:44372/Home/EditListing'>Edit</a>
+                </td>
             </tr>
             }
             </tbody>
@@ -68,8 +70,10 @@
         border-radius:10px;
     }
 </style>
-<script>
-   void goToEdit(){
+<script type='text/javascript'>
 
+    function check() {
+        return false;
     }
+
 </script>
