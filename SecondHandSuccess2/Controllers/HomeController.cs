@@ -14,7 +14,6 @@ namespace SecondHandSuccess2.Controllers
         {
             Session.Contents.RemoveAll();
                 return View();
-           
         }
 
         public ActionResult LogIn()
@@ -33,7 +32,7 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult UserHomePage()
         {
-            if ((String)Session["UserId"] != null)
+            if (Session["User"] != null)
             {
                 ViewBag.Listings = model.Listings;
                 return View();
@@ -43,10 +42,9 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-
-        public ActionResult LecturerHomepage()
+        public ActionResult LecturerHomePage()
         {
-            if ((String)Session["UserId"] != null)
+            if (Session["User"] != null)
             {
                 ViewBag.Listings = model.Listings;
                 return View();
@@ -63,9 +61,25 @@ namespace SecondHandSuccess2.Controllers
 
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
-            DbSet<PERSON> c = model.People.Where(p => p.PersonUserName == uName);
-            Session["UserId"] = "BLEP BOI";
-            return RedirectToAction("UserHomePage", "Home");
+            foreach (PERSON curP in model.People) {
+                if (curP.PersonUserName == uName)
+            { if (curP.PersonPassword == uPassword) {
+                        Session["User"] = curP;
+                        if (curP.PersonType.Equals("Person"))
+                        {
+                            return RedirectToAction("UserHomePage", "Home");
+                        }else if (curP.PersonType.Equals("Lecturer"))
+                        {
+                            return RedirectToAction("LecturerHomePage", "Home");
+                        }
+                        else if (curP.PersonType.Equals("Admin"))
+                        {
+                            return RedirectToAction("AdminHome", "Admin");
+                        }
+                    }
+                }
+            }
+            return null;
         }
         // public ActionResult About(){ViewBag.Message = "Your application description page.";return View();}
 

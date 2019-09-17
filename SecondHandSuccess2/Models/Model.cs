@@ -86,7 +86,7 @@ namespace SecondHandSuccess2.Models
 
             modelBuilder.Entity<PERSON>()
                 .Property(e => e.PersonIDNumber)
-                .IsFixedLength()
+                .IsFixedLength().IsRequired()
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSON>()

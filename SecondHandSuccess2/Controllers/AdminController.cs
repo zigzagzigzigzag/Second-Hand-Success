@@ -16,7 +16,7 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult AdminHome()
         {
-            if (User.Identity.Name != "")
+            if (Session["User"] != null)
             {
                 ViewBag.Modules = model.Modules;
                 ViewBag.People = model.People;
