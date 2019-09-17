@@ -37,25 +37,28 @@
         <tbody>
             @foreach (var item in ViewBag.Listings)
             {
-            <tr>
-                <td>
-                    @item.BOOK.bookName
-                </td>
-                <td>
-                    @item.listingCondition
-                </td>
-                <td>
-                </td>
-                    @item.listingDate
-                <td>
-                    @item.listingPrice
-                </td>
-                <td>
-                    <a href='https://localhost:44372/Home/EditListing'>Edit</a>
-                </td>
-            </tr>
+                if (@item.personIDNumber == ViewBag.User.PersonIDNumber)
+                {
+                    <tr>
+                        <td>
+                            @item.BOOK.bookName
+                        </td>
+                        <td>
+                            @item.listingCondition
+                        </td>
+                        <td>
+                            @item.listingDate.ToString("dd MMMM yyyy")
+                        </td>
+                        <td>
+                            R@(decimal.Parse(@item.listingPrice)).00
+                        </td>
+                        <td>
+                            <a href='https://localhost:44372/Home/EditListing'>Edit</a>
+                        </td>
+                    </tr>
+                }
             }
-            </tbody>
+        </tbody>
     </table>
 </div>
 <style>

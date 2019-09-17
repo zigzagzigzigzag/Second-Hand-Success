@@ -1,59 +1,118 @@
 ﻿@{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Edit Listing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title> Edit Listing</title>
-</head>
 <body>
-    <div class="row">
-        <h1 class="h1 col-md-12">Edit Listing</h1>
+    <div class="row mt-md-3">
+        <h1 class="h1 col-md-12 text-center">Listing Information</h1>
     </div>
-    <div class="col-md-12" style="color:white; margin-top:auto; margin-bottom:auto; padding-bottom:5em; background-color: #5c6b73">
-        <h2 class="h2 col-md-12 text-white">Listing Information</h2>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbook" />
-            <label class="custom-control-label" for="textbook">Textbook Name</label>
-        </div>
-        <div>
-            <input type="number" class="h2 col-md-3 text-white" id="textbookPrice" />
-            <label class="custom-control-label" for="textbookPrice">Asking Price</label>
-        </div>
-        <button>Confirm</button>
-        <button>Delete</button>
+    <div class="row mt-md-5" style="margin-bottom:15px">
+        <form class="w-75 m-md-auto card p-1 my-5">
+            <fieldset class="border-primary">
+                <legend class="font-weight-bold">Listing Information</legend>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-4">Textbook Name:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-4">Asking Price:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="number" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-2 justify-content-center" style="margin:auto">
+                        <div class="row p-2">
+                            <button class="btn btn-light btn-block">Confirm</button>
+                        </div>
+                        <div class="row p-2">
+                            <button class="btn btn-light btn-block">DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </div>
+    @*<div class="row mt-md-5">
+        <form class="w-75 m-md-auto card p-1">
+            <fieldset>
+                <legend class="font-weight-bold">Add a New Textbook</legend>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-4" for="textbookName">Textbook Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="textbookName" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-form-label col-md-4" for="textbookISBN">ISBN Number:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="textbookISBN" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-form-label col-md-4" for="textbookPublisher">Publisher:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="textbookPublisher" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-form-label col-md-4" for="textbookAuthor">Author:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="textbookAuthor" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-form-label col-md-4" for="textbookEdition">Edition:</label>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" id="textbookEdition" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-2 justify-content-center" style="margin:auto">
+                        <div class="row p-4">
+                            <button class="btn btn-light btn-block">ADD</button>
+                        </div>
+                        <div class="row p-4">
+                            <button class="btn btn-light btn-block">DELETE</button>
+                        </div>
+                    </div>
+                </div>*@
 
-    <div class="col-md-12" style="color:white; margin-top:auto; margin-bottom:auto;background-color: #5c6b73">
-        <h2 class="h2 col-md-12 text-white">Textbook Information</h2>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbookName" />
-            <label class="custom-control-label" for="textbookName">Textbook Name</label>
-        </div>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbookISBN" />
-            <label class="custom-control-label" for="textbookISBN">ISBN Number:</label>
-        </div>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbookPublisher" />
-            <label class="custom-control-label" for="textbookPublisher">Publisher:</label>
-        </div>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbookAuthor" />
-            <label class="custom-control-label" for="textbookAuthor">Author:</label>
-        </div>
-        <div>
-            <input type="text" class="h2 col-md-3 text-white" id="textbookEdition" />
-            <label class="custom-control-label" for="textbookEdition">Edition:</label>
-        </div>
-        <button>Add</button>
-        <button>Delete</button>
+
+            </fieldset>
+        </form>
     </div>
 </body>
 </html>
+<style>
+    label {
+        color: white;
+    }
+
+    .card {
+        background-color: #164f52;
+        border: none;
+        box-shadow: 0 0.7rem 0.7rem 0.5rem rgba(0, 0, 0, 0.2);
+    }
+
+    legend {
+        color: white;
+        padding-left: 15px;
+    }
+
+    fieldset {
+        padding: 5px;
+    }
+</style>
 
 

@@ -49,5 +49,7 @@ namespace SecondHandSuccess2.Models
                 .Property(e => e.PersonRating)
                 .IsUnicode(false);
         }
+
+        public System.Data.Entity.DbSet<SecondHandSuccess2.Models.Module> Modules { get; set; }
     }
 }

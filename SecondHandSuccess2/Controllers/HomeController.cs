@@ -28,15 +28,7 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 ViewBag.Listings = model.Listings;
-                List<Listing> filtered = new List();
-                foreach (var item in ViewBag.Listings)
-                {
-                    PERSON currentP = Session["User"].
-                    if ((@item.personIDNumber).Equals().)
-                    {
-
-                    }
-                }
+                ViewBag.User = Session["User"];
                 return View();
             }
             else
@@ -48,7 +40,9 @@ namespace SecondHandSuccess2.Controllers
         {
             if (Session["User"] != null)
             {
+
                 ViewBag.Prescribed = model.PRESCRIBEDs;
+                ViewBag.User = Session["User"];
                 return View();
             }
             else
@@ -83,6 +77,25 @@ namespace SecondHandSuccess2.Controllers
                             return RedirectToAction("AdminHome", "Admin");
                         }
                     }
+                }
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public Action UpdateListing()
+        {
+            ViewBag.Updated = "failed";
+            String tName = Request.Form["tName"];
+            String tPrice = Request.Form["tPrice"];
+            foreach (Listing curL in model.Listings)
+            {
+                if (curL.BOOK.bookName == tName)
+                {
+                    curL.listingPrice = tPrice;
+                    ViewBag.Updated = "Successful";
+                    //RedirectToAction("UserHomePage", "Home");
+                    break;
                 }
             }
             return null;

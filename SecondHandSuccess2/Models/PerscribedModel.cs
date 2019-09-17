@@ -12,7 +12,7 @@ namespace SecondHandSuccess2.Models
         {
         }
 
-        public virtual DbSet<Perscribed> Perscribeds { get; set; }
+        public virtual DbSet<PRESCRIBED> Perscribeds { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

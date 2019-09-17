@@ -17,20 +17,23 @@
             </tr>
         </thead>
         <tbody>
-            foreach (var item in ViewBag.Prescribed)
+            @foreach (var item in ViewBag.Prescribed)
             {
+                //if (@item.Module.moduleLecturer == ViewBag.User.PersonIDNumber)
+                //{
             <tr>
                 <td>
-                    @item.Module.ModuleCode
+                    @item.Module.moduleCode
                 </td>
                 <td>
-                    @item.Module.ModuleName
+                    @item.Module.moduleName
                 </td>
                 <td>
-                    @item.Book.BookName
+                    @item.BOOK.bookName
                 </td>
                 <td><button type="button" class="btn btn-light">Edit</button></td>
             </tr>
+                @*}*@
             }
         </tbody>
     </table>
