@@ -28,6 +28,15 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 ViewBag.Listings = model.Listings;
+                List<Listing> filtered = new List();
+                foreach (var item in ViewBag.Listings)
+                {
+                    PERSON currentP = Session["User"].
+                    if ((@item.personIDNumber).Equals().)
+                    {
+
+                    }
+                }
                 return View();
             }
             else
