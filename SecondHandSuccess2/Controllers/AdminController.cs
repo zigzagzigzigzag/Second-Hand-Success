@@ -16,10 +16,17 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult AdminHome()
         {
-
-            ViewBag.Modules = model.Modules;
-            ViewBag.People = model.People;
-            return View();
+            if (User.Identity.Name != "")
+            {
+                ViewBag.Modules = model.Modules;
+                ViewBag.People = model.People;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+           
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +12,9 @@ namespace SecondHandSuccess2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Session.Contents.RemoveAll();
+                return View();
+           
         }
 
         public ActionResult LogIn()
@@ -30,12 +33,42 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult UserHomePage()
         {
-            ViewBag.Listings = model.Listings;
-            return View();
+            if ((String)Session["UserId"] != null)
+            {
+                ViewBag.Listings = model.Listings;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
         }
 
-       // public ActionResult About(){ViewBag.Message = "Your application description page.";return View();}
+        public ActionResult LecturerHomepage()
+        {
+            if ((String)Session["UserId"] != null)
+            {
+                ViewBag.Listings = model.Listings;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
 
-       // public ActionResult Contact(){ViewBag.Message = "Your contact page.";return View();}
+        [HttpPost]
+        public ActionResult LogOn()
+        {
+
+            String uName = Request.Form["PersonUserName"];
+            String uPassword = Request.Form["PersonPassword"];
+            DbSet<PERSON> c = model.People.Where(p => p.PersonUserName == uName);
+            Session["UserId"] = "BLEP BOI";
+            return RedirectToAction("UserHomePage", "Home");
+        }
+        // public ActionResult About(){ViewBag.Message = "Your application description page.";return View();}
+
+        // public ActionResult Contact(){ViewBag.Message = "Your contact page.";return View();}
     }
 }
