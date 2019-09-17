@@ -12,33 +12,15 @@
 
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Second Hand Success", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Log in", "LogIn", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>*@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="~/Views/Home/Index.cshtml">Second Hand Success</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContext" aria-expanded="false" aria-label="Toogle nav">
             <span class="navbar-toggler-icon"></span>
         </button>
+        //must get rid of nav bar before present
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                
                 <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
                 <li class="nav-item">@Html.ActionLink("Login", "LogIn", "Home")</li>
                 <li class="nav-item">@Html.ActionLink("UserHomePage", "UserHomePage", "Home")</li>
