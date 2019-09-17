@@ -18,13 +18,6 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult LogIn()
         {
-            //if (objUserLogin.PersonUserName == "debugonweb" && objUserLogin.PersonPassword == "debugonweb")
-            //    return RedirectToAction("WelcomePage");
-            //else
-            //{
-            //   //objUserLogin.Message = "Invalid UserName/Password";
-            //    return View(LogIn);
-            //}
             return View();
         }
 
@@ -46,7 +39,7 @@ namespace SecondHandSuccess2.Controllers
         {
             if (Session["User"] != null)
             {
-                ViewBag.Listings = model.Listings;
+                ViewBag.Prescribed = model.PRESCRIBEDs;
                 return View();
             }
             else
@@ -55,10 +48,14 @@ namespace SecondHandSuccess2.Controllers
             }
         }
 
+        public ActionResult EditListing()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult LogOn()
         {
-
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
             foreach (PERSON curP in model.People) {
@@ -81,8 +78,5 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
-        // public ActionResult About(){ViewBag.Message = "Your application description page.";return View();}
-
-        // public ActionResult Contact(){ViewBag.Message = "Your contact page.";return View();}
     }
 }

@@ -28,7 +28,13 @@ nav {
     margin-left: 3em;
 }
 
+.h1 {
+    font-size: 4.5rem;
+}
 
+.h2 {
+    font-size: 3rem;
+}
 
 menuitem {
     margin: 2em;
@@ -53,3 +59,6 @@ menuitem {
     padding: 2em;
 }
 
+basicLabel {
+    color: #9bc4bc;
+}

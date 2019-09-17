@@ -219,8 +219,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Site1.Master" />
     <Content Include="Views\Home\LogIn.cshtml" />
@@ -236,6 +234,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\UserHomePage.cshtml" />
     <Content Include="Views\Home\LecturerHomePage.cshtml" />
+    <Content Include="Views\Home\EditListing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

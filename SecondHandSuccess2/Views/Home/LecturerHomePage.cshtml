@@ -17,21 +17,21 @@
             </tr>
         </thead>
         <tbody>
-            @*@foreach (var item in ViewBag.Prescribed)
+            foreach (var item in ViewBag.Prescribed)
             {
-                <tr>
-                    <td>
-                        @item.Module.ModuleCode
-                    </td>
-                    <td>
-                        @item.Module.ModuleName
-                    </td>
-                    <td>
-                        @item.Book.BookName
-                    </td>
-                    <td><button type="button" class="btn btn-light">Edit</button></td>
-                </tr>
-            }*@
+            <tr>
+                <td>
+                    @item.Module.ModuleCode
+                </td>
+                <td>
+                    @item.Module.ModuleName
+                </td>
+                <td>
+                    @item.Book.BookName
+                </td>
+                <td><button type="button" class="btn btn-light">Edit</button></td>
+            </tr>
+            }
         </tbody>
     </table>
 </div>
