@@ -235,3 +235,44 @@ h1{
    }
 
 /*Add module end*/
+
+/*Registration start*/
+
+.form-Reg-Labels
+{
+    color: #9bc4bc;
+}
+.RegHeadings 
+{
+    color: #9bc4bc;
+}
+/*Registration end*/
+
+/*User Table Start*/
+
+.table-user
+{
+    border: 1px solid white;
+    border-bottom-color: #fff;
+    color: #9bc4bc;
+    padding: 10px;
+    width:100%;
+}
+
+.user-tr 
+{
+    text-align: center;
+    border: 1px solid white;
+}
+
+.user-td 
+{
+    text-align: center;
+    border: 1px solid white;
+}
+
+.user-th {
+    text-align: Left;
+    border: 1px solid white;
+}
+/*User Table End*/

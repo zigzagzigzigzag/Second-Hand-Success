@@ -13,7 +13,7 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult Index()
         {
             Session.Contents.RemoveAll();
-                return View();
+                return RedirectToAction("LogIn","Home");
         }
 
         public ActionResult LogIn()
@@ -63,7 +63,7 @@ namespace SecondHandSuccess2.Controllers
             String uPassword = Request.Form["PersonPassword"];
             foreach (PERSON curP in model.People) {
                 if (curP.PersonUserName == uName)
-                    { if (curP.PersonPassword == uPassword) {
+            { if (curP.PersonPassword == uPassword) {
                         Session["User"] = curP;
                         if (curP.PersonType.Equals("Person"))
                         {

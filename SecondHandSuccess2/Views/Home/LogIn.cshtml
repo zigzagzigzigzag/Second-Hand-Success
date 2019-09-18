@@ -10,7 +10,7 @@
             <div class="card card-signin my-5">
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">Sign In</h5>
-                    @using (Html.BeginForm("LogOn", "Home", FormMethod.Post,new { @class = "form-horizontal", role = "form" }))
+                    @using (Html.BeginForm("LogOn", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <hr />
@@ -24,7 +24,9 @@
                             @Html.ValidationMessageFor(model => model.PersonPassword)
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                        <button onclick="" class="btn btn-lg btn-primary btn-block text-uppercase" type="button">Sign up</button>
+                        <button onclick="location.href='@Url.Action("Index", "Registration")'" class="btn btn-lg btn-primary btn-block text-uppercase" type="button">Sign up</button>
+                        
+
                         <hr class="my-4">
                     }
                 </div>
