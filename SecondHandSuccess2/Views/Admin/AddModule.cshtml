@@ -18,8 +18,8 @@
                 <div class="card-body text-center" id="addModuleContainer">
                     <h5 class="card-title text-center" id="moduleInformation">Module Information</h5>
 
-                    @using (Html.BeginForm("addModule", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form"   }))
-                    {      
+                    @using (Html.BeginForm("addModule", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <table class="table table-dark" id="tableModule">
@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                     <div class="form-label-group text-center">
-                                        @Html.DropDownList("personId", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName","PersonSurname", new { @class = "form-control"}))
+                                        @Html.DropDownList("personId", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName", "PersonSurname", new { @class = "form-control" }))
                                      
                                         @Html.ValidationMessageFor(model => model.moduleLecturer)
 
@@ -63,15 +63,15 @@
                             <tr>
                                 <td colspan="2">
                                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
-                                    }
+                                    
                                    
                                 </td>
                             </tr>
                         </tbody>
 
                     </table>
-                    }
 
+                    }
                 </div>
             </div>
         </div>

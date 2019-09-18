@@ -6,7 +6,11 @@
 
     <div class="row">
         <h1 class="h1 col-md-6">My Listings</h1>
-        <button class="col-md-1 btn btn-light justify-content-end m-auto" type="button" id="addListItem" style="margin-right:0px !important">Add</button>
+        @*<button class="col-md-1 btn btn-light justify-content-end m-auto" type="button" id="addListItem" style="margin-right:0px !important">Add</button>*@
+        @using (Html.BeginForm("addListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <button class="col-md-1 btn btn-light justify-content-end m-auto" type="submit" id="addListItem" style="margin-right:0px !important">Add</button>
+        }
         <input class="form-control mr-sm-2 col-md-2 justify-content-center m-auto" type="search" placeholder="Search" aria-label="Search" onchange="searchList()" />
         <div class="col-md-1" style="color:white; margin-top:auto; margin-bottom:auto;">
             <div class="custom-control custom-radio">
@@ -73,10 +77,3 @@
         border-radius:10px;
     }
 </style>
-<script type='text/javascript'>
-
-    const format(String toDo){
-        toDo.su
-    }
-
-</script>

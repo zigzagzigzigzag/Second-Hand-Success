@@ -22,6 +22,7 @@ namespace SecondHandSuccess2.Controllers
         }
 
         Model model = new Model();
+        private static String personID ;
 
         public ActionResult UserHomePage()
         {
@@ -56,6 +57,31 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
+        public ActionResult AddListing()
+        {       
+            
+            List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
+            //List<BOOK> books = new List<BOOK>();
+            //foreach (var book in model.BOOKs)
+            //{
+            //    books.Add(book);
+            //}
+            ViewBag.books = model.BOOKs;
+          
+
+            ViewData["conditions"] =
+                new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
+                .Select(x => new { value = x, text = x }),
+                "value", "text", "Very Bad");
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addListing()
+        {
+            return RedirectToAction("AddListing", "Home");
+        }
+
         [HttpPost]
         public ActionResult LogOn()
         {
@@ -65,6 +91,7 @@ namespace SecondHandSuccess2.Controllers
                 if (curP.PersonUserName == uName)
             { if (curP.PersonPassword == uPassword) {
                         Session["User"] = curP;
+                        personID = curP.PersonIDNumber;
                         if (curP.PersonType.Equals("Person"))
                         {
                             return RedirectToAction("UserHomePage", "Home");
@@ -76,7 +103,9 @@ namespace SecondHandSuccess2.Controllers
                         {
                             return RedirectToAction("AdminHome", "Admin");
                         }
+                        
                     }
+                    
                 }
             }
             return null;
@@ -100,5 +129,47 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
+
+
+        [HttpPost]
+        public ActionResult confirmNewListing()
+        {
+            String bookName = " ";
+            String bookISBN = Request.Form["bookISBN"];
+           
+            String condition = " ";
+            String price = " ";
+            DateTime dateTime = DateTime.UtcNow;
+            //String date = dateTime.ToString("yy-MM-dd");
+            bool exists = false;
+            foreach (BOOK book in model.BOOKs)
+            {
+                if (book.bookISBN.Equals(bookISBN))
+                {
+                   exists = true;
+                }
+            }
+
+            if (exists)
+            {
+                condition = Request.Form["listingCondition"];
+                price = Request.Form["listingPrice"];
+                if (ModelState.IsValid)
+                {
+
+                    Listing listing = new Listing();
+                    listing.bookISBN = bookISBN;
+                    listing.listingCondition = condition;
+                    listing.listingDate = dateTime;
+                    listing.listingPrice = price;
+                    listing.personIDNumber = personID;
+                    model.Listings.Add(listing);
+                    model.SaveChanges();
+                }
+            }
+            
+            return RedirectToAction("UserHomePage", "Home");
+        }
     }
+    
 }

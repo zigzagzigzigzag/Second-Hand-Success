@@ -66,30 +66,6 @@ namespace SecondHandSuccess2.Controllers
                 model.Modules.Add(module);
                 model.SaveChanges();
             }
-            
-
-            //    bool exists = false;
-            //    foreach (PERSON person in model.People)
-            //    {
-            //        if (person.PersonIDNumber.Equals(personId))
-            //        {
-            //            exists = true;
-            //        }
-            //    }
-            //    if (!exists)
-            //    {
-
-            //        model.Database.ExecuteSqlCommand("INSERT INTO Module (moduleCode,moduleName,moduleLecturer) VALUES(" + moduleName + "," + moduleCode + "," + personId + ")");
-            //    }
-
-            //SqlConnection con = new SqlConnection(@"connectionString=data source = SecondHandSuccess.mssql.somee.com; password = b55r7324n8; initial catalog = SecondHandSuccess; user id = itsnotabug123_SQLLogin_1; MultipleActiveResultSets = True; App = EntityFramework providerName= System.Data.SqlClient");
-            //SqlCommand cmd = new SqlCommand("INSERT INTO Module (moduleCode,moduleName,moduleLecturer) VALUES(" + moduleName + "," + moduleCode + "," + personId + ")", con);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@moduleCode", moduleCode);
-            //cmd.Parameters.AddWithValue("@moduleName", moduleName);
-            //cmd.Parameters.AddWithValue("@personIDNumber", textBox3.Text);
-            //cmd.Parameters.AddWithValue("@address", textBox4.Text);
-            //con.Open();
 
             return RedirectToAction("AdminHome", "Admin");
         }
