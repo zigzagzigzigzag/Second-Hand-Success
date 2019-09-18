@@ -147,7 +147,6 @@ C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\New
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\Antlr3.Runtime.pdb
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csproj.CopyComplete
-C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csprojAssemblyReference.cache
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\SecondHandSuccess2.dll.config
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\SecondHandSuccess2.dll
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\SecondHandSuccess2.pdb
@@ -245,3 +244,4 @@ C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\roslyn\System.Net.Sockets.dll
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Mike Lenovo\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Michael\Documents\GitHub\Second-Hand-Success\SecondHandSuccess2\obj\Debug\SecondHandSuccess2.csprojAssemblyReference.cache

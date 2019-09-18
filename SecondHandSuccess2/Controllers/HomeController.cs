@@ -13,7 +13,7 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult Index()
         {
             Session.Contents.RemoveAll();
-                return View();
+                return RedirectToAction("LogIn","Home");
         }
 
         public ActionResult LogIn()
