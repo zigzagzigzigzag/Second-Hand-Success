@@ -1,0 +1,83 @@
+﻿@model SecondHandSuccess2.Models.PERSON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PERSON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonCellNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonCellNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonRating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonIDNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
