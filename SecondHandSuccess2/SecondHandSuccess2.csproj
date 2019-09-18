@@ -305,11 +305,19 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+<<<<<<< HEAD
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+=======
+    <Content Include="Views\Home\UserHomePage.cshtml" />
+    <Content Include="Views\Home\LecturerHomePage.cshtml" />
+    <Content Include="Views\Home\EditListing.cshtml" />
+    <Content Include="Views\Home\AddListing.cshtml" />
+    <Content Include="Views\Admin\AddModule.cshtml" />
+>>>>>>> 40b02b49c0e47eeb7e06a53267a661587adeaee4
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

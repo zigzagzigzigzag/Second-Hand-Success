@@ -2,7 +2,6 @@
     ViewBag.Title = "Edit Listing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -19,7 +18,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-4">Textbook Name:</label>
                             <div class="col-md-8">
-                                <input class="form-control" />
+                                <input class="form-control" placeholder=@ViewBag.item/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -31,7 +30,7 @@
                     </div>
                     <div class="col col-md-2 justify-content-center" style="margin:auto">
                         <div class="row p-2">
-                            <button class="btn btn-light btn-block">Confirm</button>
+                            <button class="btn btn-light btn-block" data-toggle="modal" data-target="#confirmModal>Confirm</button>
                         </div>
                         <div class="row p-2">
                             <button class="btn btn-light btn-block">DELETE</button>
@@ -41,60 +40,13 @@
             </fieldset>
         </form>
     </div>
-    @*<div class="row mt-md-5">
-        <form class="w-75 m-md-auto card p-1">
-            <fieldset>
-                <legend class="font-weight-bold">Add a New Textbook</legend>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4" for="textbookName">Textbook Name:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookName" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookISBN">ISBN Number:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookISBN" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookPublisher">Publisher:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookPublisher" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookAuthor">Author:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookAuthor" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookEdition">Edition:</label>
-                            <div class="col-md-8">
-                                <input type="number" class="form-control" id="textbookEdition" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-2 justify-content-center" style="margin:auto">
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">ADD</button>
-                        </div>
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">DELETE</button>
-                        </div>
-                    </div>
-                </div>*@
-
-
-            </fieldset>
-        </form>
-    </div>
 </body>
 </html>
 <style>
+
+    
+
+
     label {
         color: white;
     }
