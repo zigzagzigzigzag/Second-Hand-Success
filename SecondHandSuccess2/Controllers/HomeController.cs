@@ -13,11 +13,14 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult Index()
         {
             Session.Contents.RemoveAll();
-                return RedirectToAction("LogIn","Home");
+            return RedirectToAction("LogIn","Home");
         }
 
         public ActionResult LogIn()
         {
+            if(ViewBag.passError == null)
+            ViewBag.passError = "";
+
             return View();
         }
 
@@ -40,7 +43,6 @@ namespace SecondHandSuccess2.Controllers
         {
             if (Session["User"] != null)
             {
-
                 ViewBag.Prescribed = model.PRESCRIBEDs;
                 ViewBag.User = Session["User"];
                 return View();
@@ -51,10 +53,11 @@ namespace SecondHandSuccess2.Controllers
             }
         }
 
-        public ActionResult EditListing()
-        {
+       public ActionResult EditListing()
+       {      
             return View();
-        }
+       }
+          
 
         [HttpPost]
         public ActionResult LogOn()
@@ -63,12 +66,14 @@ namespace SecondHandSuccess2.Controllers
             String uPassword = Request.Form["PersonPassword"];
             foreach (PERSON curP in model.People) {
                 if (curP.PersonUserName == uName)
-            { if (curP.PersonPassword == uPassword) {
+            { if (curP.PersonPassword == uPassword)
+                    {
                         Session["User"] = curP;
                         if (curP.PersonType.Equals("Person"))
                         {
                             return RedirectToAction("UserHomePage", "Home");
-                        }else if (curP.PersonType.Equals("Lecturer"))
+                        }
+                        else if (curP.PersonType.Equals("Lecturer"))
                         {
                             return RedirectToAction("LecturerHomePage", "Home");
                         }
@@ -76,10 +81,15 @@ namespace SecondHandSuccess2.Controllers
                         {
                             return RedirectToAction("AdminHome", "Admin");
                         }
+
+                    }
+                    else {
+                        ViewBag.passError = "Incorrect";
+                        return RedirectToAction("LogIn", "Home");
                     }
                 }
             }
-            return null;
+            return RedirectToAction("LogIn", "Home");
         }
 
         [HttpPost]
@@ -100,5 +110,8 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
+
+
+
     }
 }

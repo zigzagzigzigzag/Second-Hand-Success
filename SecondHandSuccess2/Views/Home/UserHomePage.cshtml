@@ -39,6 +39,8 @@
             {
                 if (@item.personIDNumber == ViewBag.User.PersonIDNumber)
                 {
+                    //ViewBag.currentListingBook = @item.BOOK.bookName;
+                    //ViewBag.currentListingPrice = @item.listingPrice;
                     <tr>
                         <td>
                             @item.BOOK.bookName
@@ -52,7 +54,7 @@
                         <td>
                             R@(decimal.Parse(@item.listingPrice)).00
                         </td>
-                        <td>
+                        <td>    
                             <a href='https://localhost:44372/Home/EditListing'>Edit</a>
                         </td>
                     </tr>

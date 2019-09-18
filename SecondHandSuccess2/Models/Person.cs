@@ -17,21 +17,25 @@ namespace SecondHandSuccess2.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "ID Number")]
         [StringLength(13)]
         public string PersonIDNumber { get; set; }
 
+        [Display(Name = "First Name")]
         [StringLength(50)]
         public string PersonName { get; set; }
 
+        [Display(Name = "Surname")]
         [StringLength(50)]
         public string PersonSurname { get; set; }
 
+        [Display(Name = "Cell number")]
         [StringLength(10)]
         public string PersonCellNumber { get; set; }
 
+        [Display(Name = "Email address")]
         [StringLength(50)]
         public string PersonEmail { get; set; }
-
 
         [Display(Name = "User Name")]
         [StringLength(50)]
@@ -41,6 +45,7 @@ namespace SecondHandSuccess2.Models
         [StringLength(50)]
         public string PersonPassword { get; set; }
 
+        [Display(Name = "What type of user are you")]
         [StringLength(50)]
         public string PersonType { get; set; }
 
