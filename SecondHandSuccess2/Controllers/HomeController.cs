@@ -14,7 +14,6 @@ namespace SecondHandSuccess2.Controllers
         {
             Session.Contents.RemoveAll();
             return RedirectToAction("LogIn", "Home");
-
         }
 
         public ActionResult LogIn()
