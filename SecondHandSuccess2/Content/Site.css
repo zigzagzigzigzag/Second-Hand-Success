@@ -235,3 +235,39 @@ h1{
    }
 
 /*Add module end*/
+
+/*Post listing start*/
+#tableListing1{
+    color:#E0FBFC;
+    background-color:#5C6B73;
+}
+
+#addListingTitle1{
+    color:#9BC4BC;
+}
+
+#listingInformation1{
+    color:#E0FBFC;
+}
+
+#addListingContainer1{
+   background-color:#5C6B73;
+   }
+
+#tableListing2{
+    color:#E0FBFC;
+    background-color:#5C6B73;
+}
+
+#addListingTitle2{
+    color:#9BC4BC;
+}
+
+#listingInformation2{
+    color:#E0FBFC;
+}
+
+#addListingContainer2{
+   background-color:#5C6B73;
+   }
+/* Post listing end*/

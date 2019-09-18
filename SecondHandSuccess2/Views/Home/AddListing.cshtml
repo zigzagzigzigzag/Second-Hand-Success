@@ -11,118 +11,7 @@
     </div>
     
 
-    @*<
-    <div class="row mt-md-5" style="margin-bottom:15px">
-        fieldset class="border-primary">
-        <legend class="font-weight-bold">Listing Information</legend>
-        <div class="row">
-            @using (Html.BeginForm("confirmNewListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
 
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                <div class="col col-md-6">
-                    <div class="form-group row">
-
-                        <label class="col-form-label col-md-4">Textbook Name:</label>
-                        <div class="col-md-8">
-                            <div class="form-label-group text-center">
-                                @Html.DropDownList("bookISBN", new SelectList(ViewBag.books, "bookISBN", "bookName", new { @class = "form-control" }))
-                                @Html.ValidationMessageFor(model => model.bookISBN)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-
-                        <label class="col-form-label col-md-4">Asking Price:</label>
-                        <div class="col-md-8">
-                            @Html.TextBoxFor(model => model.listingPrice, new { @class = "form-control", @type = "number", @style = "margin:auto" })
-                            @Html.ValidationMessageFor(model => model.listingPrice)
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row">
-
-                        <label class="col-form-label col-md-4">Condition:</label>
-                        <div class="col-md-8">
-                            @Html.DropDownList("conditions")
-                            @Html.ValidationMessageFor(model => model.listingCondition)
-                        </div>
-
-                    </div>
-                </div>
-
-                        <div class="col col-md-2 justify-content-center" style="margin:auto">
-                            <div class="row p-2">
-
-                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
-
-                                @*</div>
-                                        <div class="row p-2">
-
-                                        </div>
-                                    </div>*@
-
-
-                            @*</div>
-                            }
-                        </div>
-                    </fieldset>
-            </div>
-        </div>*@
-
-  @*<div class="row mt-md-5">
-       
-            <fieldset>
-                <legend class="font-weight-bold">Add a New Textbook</legend>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4" for="textbookName">Textbook Name:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookName" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookISBN">ISBN Number:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookISBN" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookPublisher">Publisher:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookPublisher" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookAuthor">Author:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookAuthor" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookEdition">Edition:</label>
-                            <div class="col-md-8">
-                                <input type="number" class="form-control" id="textbookEdition" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-2 justify-content-center" style="margin:auto">
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">ADD</button>
-                        </div>
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">DELETE</button>
-                        </div>
-                    </div>
-                </div>
-
-
-            </fieldset>*@
 
 
 <div class="container">
@@ -132,14 +21,14 @@
     <div class="row" style="margin:20px">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
-                <div class="card-body text-center" id="addModuleContainer">
-                    <h5 class="card-title text-center" id="moduleInformation">Listing Information</h5>
+                <div class="card-body text-center" id="addListingContaine1r">
+                    <h5 class="card-title text-center" id="listingInformation1">Listing Information</h5>
 
                     @using (Html.BeginForm("confirmNewListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <table class="table table-dark" id="tableModule">
+                        <table class="table table-dark" id="tableListing1">
                             <tbody>
                                 <tr>
                                     <td>
@@ -150,9 +39,6 @@
                                             @Html.DropDownList( "bookISBN", new SelectList(ViewBag.books, "bookISBN", "bookName", new { @class = "form-control" }))
                                             @Html.ValidationMessageFor(model=>model.bookISBN)
 
-                                            @*@Html.DropDownList("personId", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName", "PersonSurname", new { @class = "form-control" }))
-
-                                            @Html.ValidationMessageFor(model => model.moduleLecturer)*@
                                         </div>
                                     </td>
                                 </tr>
@@ -197,22 +83,25 @@
          <div class="row" style="margin:20px">
              <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                  <div class="card card-signin my-5">
-                     <div class="card-body text-center" id="addModuleContainer">
-                         <h5 class="card-title text-center" id="moduleInformation">Add a new textbook</h5>
+                     <div class="card-body text-center" id="addListingContainer2">
+                         <h5 class="card-title text-center" id="listingInformation2">Add a new textbook</h5>
 
-                         @using (Html.BeginForm("confirmNewListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                         @using (Html.BeginForm("createNewBook", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                          {
                              @Html.AntiForgeryToken()
                              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                             <table class="table table-dark" id="tableModule">
+                             <table class="table table-dark" id="tableListing2">
                                  <tbody>
                                      <tr>
                                          <td>
                                              Name
                                          </td>
                                          <td>
-                                             <div class="form-label-group text-center">
-                                                 <input type="text" class="form-control" id="textbookName" />
+                                            <div class="form-label-group text-center">
+                                                 @Html.TextBoxFor(model => model.BOOK.bookName, new { @class = "form-control", @style = "margin:auto" }) 
+                                                @Html.ValidationMessageFor(model=>@Model.BOOK.bookName)
+                                                
+                                                 @*<input type="text" class="form-control" id="textbookName" />*@
                                              </div>
                                          </td>
                                      </tr>
@@ -222,7 +111,9 @@
                                          </td>
                                          <td>
                                              <div class="form-label-group text-center">
-                                                 <input type="text" class="form-control" id="isbn" />
+                                                 @Html.TextBoxFor(model => model.BOOK.bookISBN, new { @class = "form-control", @style = "margin:auto" })
+                                                 @Html.ValidationMessageFor(model => @Model.BOOK.bookISBN)
+                                                 @*<input type="text" class="form-control" id="isbn" />*@
                                              </div>
                                          </td>
                                      </tr>
@@ -232,24 +123,42 @@
                                          </td>
                                          <td>
                                              <div class="form-label-group text-center">
-                                                 <input type="text" class="form-control" id="textbookPublisher" />
+                                                 @Html.TextBoxFor(model => model.BOOK.bookPublisher, new { @class = "form-control", @style = "margin:auto" })
+                                                 @Html.ValidationMessageFor(model => @Model.BOOK.bookPublisher)
+                                                 @*<input type="text" class="form-control" id="textbookPublisher" />*@
                                              </div>
                                          </td>
                                      </tr>
                                      <tr>
                                          <td>
-                                             Edition
+                                             Author
                                          </td>
                                          <td>
                                              <div class="form-label-group text-center">
-                                                 <input type="text" class="form-control" id="textbookEdition" />
+                                                 @Html.TextBoxFor(model => model.BOOK.bookAuthor, new { @class = "form-control", @style = "margin:auto" })
+                                                 @Html.ValidationMessageFor(model => @Model.BOOK.bookAuthor)
+                                                 @*<input type="text" class="form-control" id="textbookEdition" />*@
                                              </div>
                                          </td>
+                                         </tr>
+
+                                     <tr>
+                                         <td>
+                                            Edition
+                                         </td>
+                                         <td>
+                                             <div class="form-label-group text-center">
+                                                 @Html.TextBoxFor(model => model.BOOK.bookEdition, new { @class = "form-control", @type = "number", @style = "margin:auto" })
+                                                 @Html.ValidationMessageFor(model => @Model.BOOK.bookEdition)
+                                                 @*<input type="text" class="form-control" id="textbookEdition" />*@
+                                             </div>
+                                         </td>
+                                     </tr>
 
                                      <tr>
                                          <td colspan="2">
                                              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add</button>
-                                             }
+                                             
                                          </td>
                                      </tr>
                                  </tbody>

@@ -170,6 +170,44 @@ namespace SecondHandSuccess2.Controllers
             
             return RedirectToAction("UserHomePage", "Home");
         }
+
+
+        [HttpPost]
+        public ActionResult createNewBook()
+        {
+            String bookISBN = "9781119473923";
+            String bookName = "Web Code and development";
+            String bookPublisher = "John Wiley &S ons";
+            String bookAuthor = "Paul McFredries";
+            String bookEdition = "2";
+            if(Request.Form["bookISBN"] != null)
+               bookISBN = Request.Form["bookISBN"];
+            if (Request.Form["bookName"] != null)
+                bookName = Request.Form["bookName"];
+            if (Request.Form["bookPublisher"] != null)
+                bookPublisher = Request.Form["bookPublisher"];
+            if (Request.Form["bookAuthor"] != null)
+                bookAuthor = Request.Form["bookAuthor"];
+            if (Request.Form["bookEdition"] != null)
+                bookEdition = Request.Form["bookEdition"];
+         
+            if (ModelState.IsValid)
+            {
+
+                BOOK book = new BOOK();
+                book.bookISBN = bookISBN;
+                book.bookAuthor = bookAuthor;
+                book.bookEdition = bookEdition;
+                book.bookPublisher = bookPublisher;
+                book.bookName = bookName;
+                model.BOOKs.Add(book);
+                model.SaveChanges();
+            }
+
+
+            return View();
+        }
     }
-    
+
 }
+    
