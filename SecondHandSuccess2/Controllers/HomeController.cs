@@ -57,6 +57,11 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
+        public ActionResult View1()
+        {
+            return View1();
+        }
+
         public ActionResult AddListing()
         {       
             
@@ -134,7 +139,6 @@ namespace SecondHandSuccess2.Controllers
         [HttpPost]
         public ActionResult confirmNewListing()
         {
-            String bookName = " ";
             String bookISBN = Request.Form["bookISBN"];
            
             String condition = " ";
@@ -175,13 +179,13 @@ namespace SecondHandSuccess2.Controllers
         [HttpPost]
         public ActionResult createNewBook()
         {
-            //String bookISBN = " ";
-            //String bookName = " ";
-            //String bookPublisher = " ";
-            //String bookAuthor = " ";
-            //String bookEdition = " ";
-            //if(Request.Form["bookISBN"] != null)
-            //   bookISBN = Request.Form["bookISBN"];
+            string bookISBN  = Request.Form["bookISBN"];
+            string bookName = Request.Form["bookName"];
+            string bookPublisher = Request.Form["bookPublisher"];
+           string bookAuthor = bookAuthor = Request.Form["bookAuthor"];
+           string bookEdition = Request.Form["bookEdition"];
+            //if (Request.Form["bookISBN"] != null)
+            //    bookISBN = Request.Form["bookISBN"];
             //if (Request.Form["bookName"] != null)
             //    bookName = Request.Form["bookName"];
             //if (Request.Form["bookPublisher"] != null)
@@ -190,22 +194,64 @@ namespace SecondHandSuccess2.Controllers
             //    bookAuthor = Request.Form["bookAuthor"];
             //if (Request.Form["bookEdition"] != null)
             //    bookEdition = Request.Form["bookEdition"];
-         
-            //if (ModelState.IsValid)
-            //{
 
-            //    BOOK book = new BOOK();
-            //    book.bookISBN = bookISBN;
-            //    book.bookAuthor = bookAuthor;
-            //    book.bookEdition = bookEdition;
-            //    book.bookPublisher = bookPublisher;
-            //    book.bookName = bookName;
-            //    model.BOOKs.Add(book);
-            //    model.SaveChanges();
-            //}
+            if (ModelState.IsValid)
+            {
+
+                BOOK book = new BOOK();
+                book.bookISBN = bookISBN;   
+                book.bookAuthor = bookAuthor;
+                book.bookEdition = bookEdition;
+                book.bookPublisher = bookPublisher;
+                book.bookName = bookName;
+                model.BOOKs.Add(book);
+                model.SaveChanges();
+            }
+
+            return RedirectToAction("View", "Home");
+        }
 
 
-            return View();
+
+        //[HttpPost]
+        //public ActionResult createNewBook2()
+        //{
+        //    string bookISBN = Request.Form["bookISBN"];
+        //    string bookName = Request.Form["bookName"];
+        //    string bookPublisher = Request.Form["bookPublisher"];
+        //    string bookAuthor = bookAuthor = Request.Form["bookAuthor"];
+        //    string bookEdition = Request.Form["bookEdition"];
+        //    //if (Request.Form["bookISBN"] != null)
+        //    //    bookISBN = Request.Form["bookISBN"];
+        //    //if (Request.Form["bookName"] != null)
+        //    //    bookName = Request.Form["bookName"];
+        //    //if (Request.Form["bookPublisher"] != null)
+        //    //    bookPublisher = Request.Form["bookPublisher"];
+        //    //if (Request.Form["bookAuthor"] != null)
+        //    //    bookAuthor = Request.Form["bookAuthor"];
+        //    //if (Request.Form["bookEdition"] != null)
+        //    //    bookEdition = Request.Form["bookEdition"];
+
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        BOOK book = new BOOK();
+        //        book.bookISBN = bookISBN;
+
+        //        book.bookAuthor = bookAuthor;
+        //        book.bookEdition = bookEdition;
+        //        book.bookPublisher = bookPublisher;
+        //        book.bookName = bookName;
+        //        model.BOOKs.Add(book);
+        //        model.SaveChanges();
+        //    }
+
+         //   return RedirectToAction("UserHomePage", "Home");
+       // }
+
+        public ActionResult getView()
+        {
+            return View(model.BOOKs);
         }
     }
 

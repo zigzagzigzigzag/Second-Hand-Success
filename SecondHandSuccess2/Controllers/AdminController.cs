@@ -10,7 +10,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Net.Mail;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace SecondHandSuccess2.Controllers
 {
@@ -50,12 +52,14 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
+        string lecturer;
         [HttpPost]
         public ActionResult addModule()
         {
             String moduleName = Request.Form["moduleName"];
             String moduleCode = Request.Form["moduleCode"];
-            String personId = Request.Form["personId"]; 
+            String personId = Request.Form["personId"];
+            lecturer = personId;
             if(ModelState.IsValid)
             {
               
@@ -67,7 +71,7 @@ namespace SecondHandSuccess2.Controllers
                 model.SaveChanges();
             }
 
-            return RedirectToAction("AdminHome", "Admin");
+            return RedirectToAction("PromptLecturer", "Admin");
         }
 
         [HttpPost]
@@ -76,5 +80,50 @@ namespace SecondHandSuccess2.Controllers
             return RedirectToAction("AddModule", "Admin");
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PromptLecturer()
+        {
+
+            String email = lecturer + "@mandela.ac.za";
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var senderEmail = "personal.daniel.email@gmail.com";
+                    var receiverEmail = new MailAddress(lecturer, "Receiver");
+                    var message = new MailMessage();
+                    var password = "winegums";
+                    var sub = "Prescribe textbook";
+                    var body ="Your module has been added, please prescribe a textbook";
+                    using (var smtp = new SmtpClient())
+                    {
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.EnableSsl = true;
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = new NetworkCredential(senderEmail, password);
+
+                        using (var mess = new MailMessage(senderEmail, password)
+                        {
+                            Subject = sub,
+                            Body = body
+                        })
+                        smtp.EnableSsl = true;
+                        await smtp.SendMailAsync(message);
+                        return RedirectToAction("Sent");
+                    }
+                   
+                }
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Some Error";
+            }
+            return View(model);
+        }
     }
 }
