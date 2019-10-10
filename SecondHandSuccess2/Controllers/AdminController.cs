@@ -47,7 +47,36 @@ namespace SecondHandSuccess2.Controllers
         [HttpPost]
         public ActionResult addModule()
         {
-            return RedirectToAction("AdminHome", "Admin");
+            String moduleName = Request.Form["moduleName"];
+            String moduleCode = Request.Form["moduleCode"];
+            String lecturer = Request.Form["personID"];
+
+            bool exists = false;
+            foreach (Module module in model.Modules)
+            {
+                if (module.moduleCode.Equals(moduleCode))
+                {
+                    exists = true;
+                }
+            }
+
+            if (!exists)
+            {
+               
+          
+                if (ModelState.IsValid)
+                {
+
+                    Module module = new Module();
+                    module.moduleCode = moduleCode;
+                    module.moduleName = moduleName;
+                    module.moduleLecturer = lecturer;
+                
+                    model.Modules.Add(module);
+                    model.SaveChanges();
+                }
+            }
+                return RedirectToAction("AdminHome", "Admin");
         }
 
         [HttpPost]

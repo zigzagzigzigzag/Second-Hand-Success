@@ -1,5 +1,113 @@
 ﻿@model SecondHandSuccess2.Models.Module
 
+<div id="addModule">
+
+    @{
+        ViewBag.Title = "AddModule";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    <div class="container">
+        <div class="row">
+            <h1 class="h1 col-md-6" id="addModuleTitle">Add a Module</h1>
+        </div>
+        <div class="row" style="margin:20px">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body text-center" id="addModuleContainer">
+                        <h5 class="card-title text-center" id="moduleInformation">Module Information</h5>
+
+                        @using (Html.BeginForm("addModule", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <table class="table table-dark" id="tableModule">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Module Name
+                                        </td>
+                                        <td>
+                                            <div class="form-label-group text-center">
+                                                @Html.TextBoxFor(model => model.moduleName, new { @class = "form-control", @style = "margin:auto" })
+                                                @Html.ValidationMessageFor(model => model.moduleName)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Module Code
+                                        </td>
+                                        <td>
+                                            <div class="form-label-group text-center">
+                                                @Html.TextBoxFor(model => model.moduleCode, new { @class = "form-control", @style = "margin:auto" })
+                                                @Html.ValidationMessageFor(model => model.moduleCode)
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Lecturer Name
+                                        </td>
+                                        <td>
+                                            <div class="form-label-group text-center">
+                                                @Html.DropDownList("personId", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName", "PersonSurname", new { @class = "form-control" }))
+
+                                                @Html.ValidationMessageFor(model => model.moduleLecturer)
+
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
+
+
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .form-control {
+            border-color: #d4d4d4 !important;
+            background-color: rgb(243, 243, 243);
+        }
+
+
+
+
+        .form-label-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            max-width: 280px;
+            margin: auto;
+        }
+    </style>
+
+</div>
+
+
+
+
+
+@*@model SecondHandSuccess2.Models.Module
+
 @{
     ViewBag.Title = "AddModule";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -52,7 +160,7 @@
                                     <td>
                                         <div class="form-label-group text-center">
                                             @Html.DropDownList("PersonIDNumber", new SelectList(ViewBag.lecturers, "PersonIDNumber", "PersonName","PersonSurname", new { @class = "form-control"}))
-                                            @*@Html.TextBoxFor(model => model.moduleLecturer, new { @class = "form-control", @style = "margin:auto" })*@
+                                            @Html.TextBoxFor(model => model.moduleLecturer, new { @class = "form-control", @style = "margin:auto" })
                                             @Html.ValidationMessageFor(model => model.moduleLecturer)
 
                                             
@@ -106,9 +214,12 @@
 
 
 
-    <div class="form-horizontal">
+    <div class="form-horizontal">*@
 
-        @*<hr />
+        @*
+            keep commented
+            
+            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.moduleCode, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -138,10 +249,13 @@
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
-            </div>*@
-    </div>
+            </div>
+            end of keep commented*@
+
+
+    @*</div>
     }
 
     <div>
         @Html.ActionLink("Back to List", "Index")
-    </div>
+    </div>*@
