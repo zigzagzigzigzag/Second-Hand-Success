@@ -103,7 +103,7 @@
                                                
 
                                                 @Html.TextBoxFor(model => book.bookISBN, new { @class = "form-control", @style = "margin:auto" })
-                                                @Html.ValidationMessageFor(model => book.bookISBN);
+                                                @Html.ValidationMessageFor(model => book.bookISBN)
 
                                             </div>
                                         </td>
@@ -114,7 +114,7 @@
                                         </td>
                                         <td>
                                             @Html.TextBoxFor(model => book.bookName, new { @class = "form-control", @style = "margin:auto" })
-                                            @Html.ValidationMessageFor(model => book.bookName);
+                                            @Html.ValidationMessageFor(model => book.bookName)
                                         </td>
                                     </tr>
                                     <tr>

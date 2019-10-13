@@ -13,6 +13,7 @@ namespace SecondHandSuccess2.Controllers
     public class UserController : Controller
     {
         private SecondHandSuccessEntities2 db = new SecondHandSuccessEntities2();
+        Model model = new Model();
 
         // GET: User
         public ActionResult Index()
@@ -124,6 +125,65 @@ namespace SecondHandSuccess2.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult editModuleButton(string moduleEditing)
+        {
 
+            currentModuleName = moduleEditing;
+           
+           
+            return RedirectToAction("PrescribeTextbook", "User");
+        }
+
+        private static string currentModuleName;
+        public ActionResult PrescribeTextbook()
+        {
+            List<Module> modules = new List<Module>();
+            foreach (var module in model.Modules)
+            {
+                modules.Add(module);
+            }
+            ViewBag.module = currentModuleName;
+            ViewBag.modules = modules;
+            ViewBag.books = model.BOOKs;
+            return View();
+        }
+
+        public ActionResult confirmPrescribeTextbook()
+        {
+            string ISBN = Request.Form["bookISBN"];
+            DateTime dateTime = DateTime.UtcNow;
+            List< Module > modules = new List<Module>();
+            PRESCRIBED prescribed = new PRESCRIBED();
+            foreach (var module in model.Modules)
+            {
+                if (module.moduleName.Equals(currentModuleName))
+                {
+                   foreach(var book in model.BOOKs)
+                    {
+                        if (book.bookISBN.Equals(ISBN)){
+                           
+                            prescribed.bookISBN = book.bookISBN;
+                            prescribed.moduleCode = module.moduleCode;
+                            prescribed.prescribedDate = dateTime;
+                        }
+                    }
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                bool exists = false;
+                foreach(PRESCRIBED existingPrescription in model.PRESCRIBEDs)
+                {
+                    if(prescribed.moduleCode.Equals(existingPrescription.moduleCode))
+                    {
+                        model.PRESCRIBEDs.Remove(existingPrescription);
+                    }
+                }
+                model.PRESCRIBEDs.Add(prescribed);             
+                model.SaveChanges();
+            }
+
+            return RedirectToAction("LecturerHomePage", "Home");
+        }
     }
 }

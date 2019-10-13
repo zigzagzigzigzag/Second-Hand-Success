@@ -2,6 +2,8 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{ var book = ViewBag.books as SecondHandSuccess2.Models.BOOK;}
+@model SecondHandSuccess2.Models.Module
 
 <div class="row">
     <h1 class="h1 col-md-6">My Modules</h1>
@@ -17,7 +19,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in ViewBag.Prescribed)
+            @using (Html.BeginForm("editModuleButton", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+          {
+              @Html.AntiForgeryToken()
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              foreach (var item in ViewBag.Prescribed)
             {
                 //if (@item.Module.moduleLecturer == ViewBag.User.PersonIDNumber)
                 //{
@@ -26,15 +32,19 @@
                     @item.Module.moduleCode
                 </td>
                 <td>
-                    @item.Module.moduleName
+                  @item.Module.moduleName
                 </td>
                 <td>
                     @item.BOOK.bookName
                 </td>
-                <td><button type="button" class="btn btn-light">Edit</button></td>
+                <td>
+                    <input type="hidden" name="moduleNameHidden" value="maybe" id="moduleNameHidden" />
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" value=" @item.Module.moduleName" type="submit" name="moduleEditing">Edit</button>
+                </td>
             </tr>
-                @*}*@
+
             }
+         }
         </tbody>
     </table>
 </div>
