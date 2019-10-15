@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SecondHandSuccess2.Models;
 
+
 namespace SecondHandSuccess2.Controllers
 {
     public class UserController : Controller
@@ -129,10 +130,13 @@ namespace SecondHandSuccess2.Controllers
         {
 
             currentModuleName = moduleEditing;
-           
-           
+
+            
             return RedirectToAction("PrescribeTextbook", "User");
         }
+
+
+        
 
         private static string currentModuleName;
         public ActionResult PrescribeTextbook()
