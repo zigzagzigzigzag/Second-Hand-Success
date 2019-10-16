@@ -80,7 +80,8 @@ namespace SecondHandSuccess2.Controllers
                     { 
                         if (person.PersonIDNumber.Equals(lecturer))
                         {
-                            sendEmail(person.PersonEmail,moduleName);
+                            string bodyText = "Dear "+person.PersonName+ ",\r\n Please prescribe a textbook for " + moduleName;
+                            sendEmail(person.PersonEmail, "Prescibe Textbook",bodyText);
                         }
                     }
                     
@@ -111,11 +112,25 @@ namespace SecondHandSuccess2.Controllers
             return View();
         }
 
-        private void sendEmail(string lecturer,string moduleName)
+        public ActionResult startYearPrompt()
+        {
+            foreach (PERSON person in model.People)
+            {
+                if (person.PersonType.Equals("Lecturer"))
+                {
+                    string bodyText = "Dear " + person.PersonName + ",\r\n Please update your modules' textbooks ";
+                    string subject = "Update Modules' textbooks";
+                    sendEmail(person.PersonEmail,subject,bodyText);
+                }
+            }
+            return RedirectToAction("AdminHome", "Admin");
+        }
+
+        private void sendEmail(string lecturer,string subjectInput,string bodyText)
         {
             // Remove next line for final test
-            string temp = lecturer;
-            lecturer = "s216458366@mandela.ac.za";
+            //string temp = lecturer;
+            //lecturer = "s216458366@mandela.ac.za";
 
             try
             {
@@ -138,8 +153,8 @@ namespace SecondHandSuccess2.Controllers
 
                     using (var mess = new MailMessage(senderEmail, receiverEmail)
                     {
-                        Subject = "Prescibe Textbook",
-                        Body = "Please prescribe a textbook for "+ moduleName
+                        Subject = subjectInput,
+                        Body = bodyText
                     })
                     {
                         smtp.Send(mess);
@@ -152,6 +167,11 @@ namespace SecondHandSuccess2.Controllers
             }
         }
 
+
+        public void radioMethod(string searchGroup)
+        {
+            string temp = searchGroup;
+        }
 
     }
 }
