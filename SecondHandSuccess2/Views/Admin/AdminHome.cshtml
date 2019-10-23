@@ -4,19 +4,22 @@
         ViewBag.Title = "AdminHome";
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-
+    <div class="row"
     <h2 class="=typeHeading">ADMINISTRATOR</h2>
+    <a class="col-md-1 btn btn-light justify-content-end m-auto" style="margin-right:0px" href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0)>Log Out</a>
+    </div>
     <div id="adminHomeContainer">
         <div class="adminHomeColumnLeft">
             <div id="moduleStart">
                 <h3 id="dataHeadingModule">MODULES</h3>
+
                 @*<input type="button" value="Add" id="addButton" onclick="@Url.Action("AddModule", "Admin") %>';"/>*@
                 @using (Html.BeginForm("add", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add</button>
                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='@Url.Action("Index", "User")'">Remove Users</button>
                 }
-                </div>
+            </div>
 
             <table class="tableA">
                 <tr>
@@ -31,7 +34,7 @@
                     </th>
                 </tr>
                 @foreach (var item in ViewBag.Modules)
-            {
+                {
                     <tr class="tableItem">
                         <td>
                             @item.moduleCode
@@ -67,7 +70,7 @@
                     </th>
                 </tr>
                 @foreach (var item in ViewBag.People)
-            {
+                {
                     <tr class="tableItem">
                         <td>
                             @item.PersonUserName

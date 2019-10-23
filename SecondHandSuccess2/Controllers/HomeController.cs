@@ -13,7 +13,7 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult Index()
         {
-            //Session.Contents.RemoveAll();
+            Session.Contents.RemoveAll();
             return RedirectToAction("LogIn", "Home");
         }
 
@@ -43,6 +43,7 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 ViewBag.Prescribed = model.PRESCRIBEDs;
+                ViewBag.Modules = model.Modules;
                 ViewBag.User = Session["User"];
                 return View();
             }
@@ -225,7 +226,7 @@ namespace SecondHandSuccess2.Controllers
             foreach (PERSON curP in model.People) {
                 if (curP.PersonUserName == uName)
                 {
-                   // uNameFound = true; 
+                    // uNameFound = true; 
                     if (curP.PersonPassword == uPassword)
                     {
                         Session["User"] = curP;
@@ -274,7 +275,15 @@ namespace SecondHandSuccess2.Controllers
             return null;
         }
 
+        public Action filterSearch() {
+            //Request.Form["searchGroup"];
 
+            //Request.Form["radiogroup"];
+            //then filter model.Listings.Where
+
+            //    retrurn to page;
+            return null;
+        }
 
     }
 }

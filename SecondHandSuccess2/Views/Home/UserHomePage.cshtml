@@ -4,17 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
+    <div class="row align-items-center">
         <h1 class="h1 col-md-6">My Listings</h1>
-        @*<button class="col-md-1 btn btn-light justify-content-end m-auto" type="button" id="addListItem" style="margin-right:0px !important">Add</button>*@
-       @using (Html.BeginForm("addListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-       {
-        <button class="col-md-1 btn btn-light justify-content-end m-auto" type="submit" id="addListItem" style="margin-right:0px !important">Add</button>
-       }
+        @using (Html.BeginForm("addListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <button class="col-md-12 btn btn-light justify-content-end m-auto" type="submit" id="addListItem" style="margin-right:0px" >Add Listing</button>
+        }
+        <a class="col-md-1 btn btn-light justify-content-end m-auto" style="margin-right:0px" href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0)>Log Out</a>
         <input class="form-control mr-sm-2 col-md-2 justify-content-center m-auto" type="search" placeholder="Search" aria-label="Search" onchange="searchList()" />
         <div class="col-md-1" style="color:white; margin-top:auto; margin-bottom:auto;">
             <div class="custom-control custom-radio">
-                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" onclick="LoadList(1)"/>
+                <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" onclick="LoadList(1)" />
                 <label class="custom-control-label" for="searchGroup1">Users</label>
             </div>
             <div class="custom-control custom-radio">
@@ -26,6 +26,7 @@
                 <label class="custom-control-label" for="searchGroup3">Modules</label>
             </div>
         </div>
+        <a class="col-md-1 btn btn-light justify-content-end m-auto" style="margin-right:0px" href=@Url.Action(controllerName: "Home", actionName: "filterSearch", routeValues: 0)>Search</a>
     </div>
 <div class="row" style="margin:20px">
     <table class="table table-striped table-dark">
@@ -57,13 +58,15 @@
                     R@(decimal.Parse(@item.listingPrice)).00
                 </td>
                 <td>
-                    <a href=@Url.Action(
+                    <a class="col-md-12 btn btn-light justify-content-end m-auto" style="margin-right:0px" 
+                       href=@Url.Action(
                                 controllerName: "Home",
                                 actionName: "EditListing",
                                 routeValues: new { id = @item.BOOK.bookISBN })>Edit</a>
                 </td>
                 <td>
-                    <a href=@Url.Action(
+                    <a class="col-md-12 btn btn-light justify-content-end m-auto" style="margin-right:0px"
+                       href=@Url.Action(
                                 controllerName: "Home",
                                 actionName: "deleteListing",
                                 routeValues: new { id = @item.BOOK.bookISBN })>Delete</a>
@@ -86,10 +89,3 @@
         border-radius:10px;
     }
 </style>
-<script type='text/javascript'>
-
-    const format(String toDo){
-        toDo.su
-    }
-
-</script>
