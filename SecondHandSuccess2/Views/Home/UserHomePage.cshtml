@@ -43,25 +43,32 @@
             {
                 if (@item.personIDNumber == ViewBag.User.PersonIDNumber)
                 {
-                    //ViewBag.currentListingBook = @item.BOOK.bookName;
-                    //ViewBag.currentListingPrice = @item.listingPrice;
-                    <tr>
-                        <td>
-                            @item.BOOK.bookName
-                        </td>
-                        <td>
-                            @item.listingCondition
-                        </td>
-                        <td>
-                            @item.listingDate.ToString("dd MMMM yyyy")
-                        </td>
-                        <td>
-                            R@(decimal.Parse(@item.listingPrice)).00
-                        </td>
-                        <td>    
-                            <a href='https://localhost:44372/Home/EditListing'>Edit</a>
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @item.BOOK.bookName
+                </td>
+                <td>
+                    @item.listingCondition
+                </td>
+                <td>
+                    @item.listingDate.ToString("dd MMMM yyyy")
+                </td>
+                <td>
+                    R@(decimal.Parse(@item.listingPrice)).00
+                </td>
+                <td>
+                    <a href=@Url.Action(
+                                controllerName: "Home",
+                                actionName: "EditListing",
+                                routeValues: new { id = @item.BOOK.bookISBN })>Edit</a>
+                </td>
+                <td>
+                    <a href=@Url.Action(
+                                controllerName: "Home",
+                                actionName: "deleteListing",
+                                routeValues: new { id = @item.BOOK.bookISBN })>Delete</a>
+                </td>
+            </tr>
                 }
             }
         </tbody>

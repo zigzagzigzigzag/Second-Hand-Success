@@ -1,9 +1,26 @@
-﻿@{
+﻿@model SecondHandSuccess2.Models.Listing
+
+@{
     ViewBag.Title = "Edit Listing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
+
+<script>
+    function confirm() {
+
+        window.confirm("Yes?");
+
+        if (value == true) {
+
+
+
+        }
+
+    }
+
+</script>
 
 <html>
 <body>
@@ -11,35 +28,43 @@
         <h1 class="h1 col-md-12 text-center">Listing Information</h1>
     </div>
     <div class="row mt-md-5" style="margin-bottom:15px">
-        <form class="w-75 m-md-auto card p-1 my-5">
+        <div class="w-75 m-md-auto card p-1 my-5">
             <fieldset class="border-primary">
-                <legend class="font-weight-bold">Listing Information</legend>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4">Textbook Name:</label>
-                            <div class="col-md-8">
-                                <input class="form-control" readonly ="readonly"/>
+                @using (Html.BeginForm("EditListingPage", "Home", FormMethod.Post))
+                {
+                    <legend class="font-weight-bold">Listing Information</legend>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4">Textbook Name:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.BOOK.bookName, new { @id = "bookName", @class = "form-control", @style = "margin:auto", @readonly = "readonly", @placeholder = "@Model.BOOK.bookName" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4">Asking Price:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.listingPrice, new { @id = "listingPrice", @class = "form-control", @type = "number", @style = "margin:auto", @value = "@Model.listingPrice" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-4">Condition:</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("conditions")
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4">Asking Price:</label>
-                            <div class="col-md-8">
-                                <input class="form-control" type="number" />
+                        <div class="col col-md-2 justify-content-center" style="margin:auto">
+                            <div class="row p-2">
+                                <button type="submit" class="btn btn-light btn-block">CONFIRM</button>
+
                             </div>
+                            
                         </div>
                     </div>
-                    <div class="col col-md-2 justify-content-center" style="margin:auto">
-                        <div class="row p-2">
-                            <button class="btn btn-light btn-block">CONFIRM</button>
-                        </div>
-                        <div class="row p-2">
-                            <button class="btn btn-light btn-block">DELETE</button>
-                        </div>
-                    </div>
-                </div>
+                }
             </fieldset>
-        </form>
+        </div>
     </div>
 </body>
 </html>
