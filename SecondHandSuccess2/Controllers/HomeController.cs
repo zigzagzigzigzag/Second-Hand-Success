@@ -52,7 +52,6 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-
         public ActionResult EditListing()
         {
             if (Session["User"] != null)
@@ -82,7 +81,6 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-
         public ActionResult AddListing()
         {
             if (Session["User"] != null)
@@ -102,7 +100,6 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-
         [HttpPost]
         public ActionResult confirmNewListing()
         {
@@ -141,8 +138,6 @@ namespace SecondHandSuccess2.Controllers
 
             return RedirectToAction("UserHomePage", "Home");
         }
-
-
         [HttpPost]
         public ActionResult createNewBook()
         {
@@ -180,13 +175,12 @@ namespace SecondHandSuccess2.Controllers
             }
             return RedirectToAction("AddListing", "Home");
         }
-
-
         public ActionResult getView()
         {
             return View(model.BOOKs);
         }
-        public ActionResult deleteListing() {
+        public ActionResult deleteListing()
+        {
 
             string bookISBN = RouteData.Values["id"].ToString();
             string uId = ((PERSON)Session["User"]).PersonIDNumber;
@@ -196,26 +190,18 @@ namespace SecondHandSuccess2.Controllers
 
             return RedirectToAction("UserHomePage", "Home");
         }
-        public ActionResult editListingPage() {
+        public ActionResult editListingPage()
+        {
             string condition = Request.Form["conditions"];
             var price = Request.Form["listingPrice"];
-            var ISBN = Request.Form["bookISBN"];
-            String date = Request.Form["listingDate"];
-            string idNumber = Request.Form["personIDNumber"];
-
-            DateTime dateToUse = DateTime.UtcNow;
 
             Listing current = (Listing)Session["currentListing"];
             model.Listings.Find(current.bookISBN, current.personIDNumber).listingCondition = condition;
             model.Listings.Find(current.bookISBN, current.personIDNumber).listingPrice = price;
-            model.Listings.Find(current.bookISBN, current.personIDNumber).bookISBN = ISBN;
-            model.Listings.Find(current.bookISBN, current.personIDNumber).listingDate = dateToUse;
-            model.Listings.Find(current.bookISBN, current.personIDNumber).personIDNumber = idNumber;
             model.SaveChanges();
 
             return RedirectToAction("UserHomePage", "Home");
         }
-
         public ActionResult LogOn()
         {
             Boolean uNameFound = false;
@@ -223,7 +209,8 @@ namespace SecondHandSuccess2.Controllers
             Session["uNameError"] = "";
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
-            foreach (PERSON curP in model.People) {
+            foreach (PERSON curP in model.People)
+            {
                 if (curP.PersonUserName == uName)
                 {
                     // uNameFound = true; 
@@ -255,7 +242,6 @@ namespace SecondHandSuccess2.Controllers
             if (!uNameFound) { Session["uNameError"] = "Wrong Username"; }
             return RedirectToAction("LogIn", "Home");
         }
-
         [HttpPost]
         public Action UpdateListing()
         {
@@ -274,16 +260,63 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
+        [HttpPost]
+        public ActionResult filterSearch(string searchCriteria)
+        {
+            if (Session["User"] != null)
+            {
+                return RedirectToAction("SearchResults", new { search = searchCriteria });
+            }
 
-        public Action filterSearch() {
-            //Request.Form["searchGroup"];
-
-            //Request.Form["radiogroup"];
-            //then filter model.Listings.Where
-
-            //    retrurn to page;
-            return null;
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
         }
+        public ActionResult SearchResults(string search)
+        {
+            if (Session["User"] != null)
+            {
+                List<PERSON> foundPeople = new List<PERSON>();
+                List<Listing> foundListings = new List<Listing>();
+                List<PRESCRIBED> foundModules = new List<PRESCRIBED>();
 
+                foreach (PERSON p in model.People)
+                {
+                    if (p.PersonName.Equals(search))
+                    {
+                        foundPeople.Add(p);
+                    }
+                }
+
+                foreach (Listing l in model.Listings)
+                {
+                    if (l.BOOK.bookName.Equals(search))
+                    {
+                        foundListings.Add(l);
+                    }
+                }
+
+                foreach (PRESCRIBED p in model.PRESCRIBEDs)
+                {
+                    if (p.moduleCode.Equals(search) || p.BOOK.bookName.Equals(search))
+                    {
+                        foundModules.Add(p);
+                    }
+                }
+
+                ViewBag.searchText = search;
+                ViewBag.people = foundPeople;
+                ViewBag.listings = foundListings;
+                ViewBag.modules = foundModules;
+
+                return View();
+            }
+
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
     }
 }

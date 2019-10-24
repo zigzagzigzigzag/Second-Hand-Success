@@ -4,12 +4,12 @@
 }
 @{ var book = ViewBag.books as SecondHandSuccess2.Models.BOOK;}
 @model SecondHandSuccess2.Models.Module
-    
 
-    <div class="row">
-        <h1 class="h1 col-md-6">My Modules</h1>
-        <a class="col-md-1 btn btn-light justify-content-end m-auto" style="margin-right:0px" href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0)>Log Out</a>
-    </div>
+
+<div class="row">
+    <h1 class="h1 col-md-6">My Modules</h1>
+    <a class="col-md-1 btn btn-light justify-content-end m-auto" style="margin-right:0px" href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0)>Log Out</a>
+</div>
 <div class="row" style="margin:20px">
     <table class="table table-striped table-dark">
         <thead>
@@ -27,13 +27,10 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 foreach (var item in ViewBag.Prescribed)
                 {
-                    var userID = ViewBag.User.PersonIDNumber;
-                    if (@item.Module.moduleLecturer == @userID)
+                    if (@item.Module.moduleLecturer == (ViewBag.User.PersonIDNumber).Trim())
                     {
                         <tr>
                             <td>
-                                @item.Module.moduleLecturer
-                                @userID
                                 @item.Module.moduleCode
                             </td>
                             <td>
