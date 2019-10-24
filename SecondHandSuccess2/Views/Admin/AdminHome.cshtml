@@ -1,0 +1,124 @@
+﻿<div id="adminHome">
+
+    @{
+        ViewBag.Title = "AdminHome";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1 class="h1 col-md-6">ADMINISTRATOR</h1>
+
+    <div id="adminHomeContainer">
+        <div class="adminHomeColumnLeft">
+
+
+
+            <div class="row" style="margin:20px">
+                <h3 id="dataHeadingModule">MODULES</h3>
+                <br /><br />
+                <table class="table table-striped table-dark">
+
+                    <thead>
+                        <tr>
+                            <td colspan="4">
+                                @using (Html.BeginForm("add", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add Module</button>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col" style="border-top:none;">Module Code</th>
+                            <th scope="col" style="border-top:none;">Lecturer</th>
+                            <th scope="col" style="border-top:none;"> Module Name</th>
+                        <tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Modules)
+            {
+
+                         
+                            <tr class="tableItem">
+                                <td>
+                                    @item.moduleCode
+                                </td>
+                                <td>
+                                    @item.moduleLecturer
+                                </td>
+                                <td>
+                                    @item.moduleName
+                                </td>
+                                @*<td>
+                                    <input type="button" value="Edit" class="Button" />
+                                </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            @*@using (Html.BeginForm("add", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='@Url.Action("Index", "User")'">Remove Users</button>
+                }
+                <br />*@
+            <br />
+        </div>
+        <div class="=adminHomeColumnRight">
+
+            <div class="row" style="margin:20px">
+                <h3 id="dataHeadingUser">USERS</h3>
+                <br /><br />
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr >
+                            <td colspan="4">
+                                @*<input type="button" value="Remove" class="Button" />*@
+                                @using (Html.BeginForm("add", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='@Url.Action("Index", "User")'">Remove Users</button>
+                                }
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col" style="border-top:none;">Username</th>
+                            <th scope="col" style="border-top:none;">Name</th>
+                            <th scope="col" style="border-top:none;">Surname</th>
+                            <th scope="col" style="border-top:none;">Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.People)
+            {
+                            <tr class="tableItem">
+                                <td>
+                                    @item.PersonUserName
+                                </td>
+                                <td>
+                                    @item.PersonName
+                                </td>
+                                <td>
+                                    @item.PersonSurname
+                                </td>
+                                <td>
+                                    @item.PersonRating
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="startYearPrompt">
+        @using (Html.BeginForm("startYearPrompt", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Prompt Lecturers to update textbooks</button>
+        }
+
+    </div>
+
+
+
+</div>

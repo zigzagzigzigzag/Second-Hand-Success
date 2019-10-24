@@ -10,15 +10,17 @@ namespace SecondHandSuccess2.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index()
         {
             Session.Contents.RemoveAll();
-            return RedirectToAction("LogIn", "Home");
+            return RedirectToAction("LogIn","Home");
         }
 
         public ActionResult LogIn()
         {
+            if(ViewBag.passError == null)
+            ViewBag.passError = "";
+
             return View();
         }
 
@@ -43,7 +45,6 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 ViewBag.Prescribed = model.PRESCRIBEDs;
-                ViewBag.Modules = model.Modules;
                 ViewBag.User = Session["User"];
                 return View();
             }
@@ -52,54 +53,28 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-        public ActionResult EditListing()
-        {
-            if (Session["User"] != null)
-            {
-                string bookISBN = RouteData.Values["id"].ToString();
-                string uId = ((PERSON)Session["User"]).PersonIDNumber;
 
-                Listing curList = model.Listings.Find(bookISBN, uId);
-                Session["currentListing"] = curList;
+       public ActionResult EditListing()
+       {      
+            return View();
+       }
 
-
-                List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
-
-                ViewBag.books = model.BOOKs;
-
-
-                ViewData["conditions"] =
-                    new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
-                    .Select(x => new { value = x, text = x }),
-                    "value", "text", "Very Bad");
-
-                return View(curList);
-            }
-
-            else
-            {
-                return RedirectToAction("LogIn", "Home");
-            }
-        }
         public ActionResult AddListing()
         {
-            if (Session["User"] != null)
-            {
-                List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
 
-                ViewData["conditions"] =
-                    new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
-                    .Select(x => new { value = x, text = x }),
-                    "value", "text", "Very Bad");
+            List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
 
-                return View();
-            }
+            ViewBag.books = model.BOOKs;
 
-            else
-            {
-                return RedirectToAction("LogIn", "Home");
-            }
+
+            ViewData["conditions"] =
+                new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
+                .Select(x => new { value = x, text = x }),
+                "value", "text", "Very Bad");
+
+            return View();
         }
+
         [HttpPost]
         public ActionResult confirmNewListing()
         {
@@ -138,6 +113,8 @@ namespace SecondHandSuccess2.Controllers
 
             return RedirectToAction("UserHomePage", "Home");
         }
+
+
         [HttpPost]
         public ActionResult createNewBook()
         {
@@ -147,7 +124,7 @@ namespace SecondHandSuccess2.Controllers
             String publisher = Request.Form["book.bookPublisher"];
             String author = Request.Form["book.bookAuthor"];
             String edition = Request.Form["book.bookEdition"];
-
+            
             bool exists = false;
             foreach (BOOK book in model.BOOKs)
             {
@@ -171,50 +148,29 @@ namespace SecondHandSuccess2.Controllers
                     model.BOOKs.Add(book);
                     model.SaveChanges();
                 }
-
+                
             }
+
             return RedirectToAction("AddListing", "Home");
-        }
-        public ActionResult getView()
-        {
-            return View(model.BOOKs);
-        }
-        public ActionResult deleteListing()
-        {
 
-            string bookISBN = RouteData.Values["id"].ToString();
-            string uId = ((PERSON)Session["User"]).PersonIDNumber;
-            Listing toRemove = model.Listings.Find(bookISBN, uId);
-            model.Listings.Remove(toRemove);
-            model.SaveChanges();
 
-            return RedirectToAction("UserHomePage", "Home");
         }
-        public ActionResult editListingPage()
-        {
-            string condition = Request.Form["conditions"];
-            var price = Request.Form["listingPrice"];
+    
 
-            Listing current = (Listing)Session["currentListing"];
-            model.Listings.Find(current.bookISBN, current.personIDNumber).listingCondition = condition;
-            model.Listings.Find(current.bookISBN, current.personIDNumber).listingPrice = price;
-            model.SaveChanges();
+    public ActionResult getView()
+    {
+        return View(model.BOOKs);
+    }
 
-            return RedirectToAction("UserHomePage", "Home");
-        }
+
+    [HttpPost]
         public ActionResult LogOn()
         {
-            Boolean uNameFound = false;
-            Session["uPasswordError"] = "";
-            Session["uNameError"] = "";
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
-            foreach (PERSON curP in model.People)
-            {
+            foreach (PERSON curP in model.People) {
                 if (curP.PersonUserName == uName)
-                {
-                    // uNameFound = true; 
-                    if (curP.PersonPassword == uPassword)
+            { if (curP.PersonPassword == uPassword)
                     {
                         Session["User"] = curP;
                         personID = curP.PersonIDNumber;
@@ -230,18 +186,17 @@ namespace SecondHandSuccess2.Controllers
                         {
                             return RedirectToAction("AdminHome", "Admin");
                         }
+
                     }
-                    else
-                    {
-                        ModelState.AddModelError("PersonUserName", "Error message for User");
-                        Session["uPasswordError"] = "Wrong Password";
+                    else {
+                        ViewBag.passError = "Incorrect";
                         return RedirectToAction("LogIn", "Home");
                     }
                 }
             }
-            if (!uNameFound) { Session["uNameError"] = "Wrong Username"; }
             return RedirectToAction("LogIn", "Home");
         }
+
         [HttpPost]
         public Action UpdateListing()
         {
@@ -260,63 +215,8 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
-        [HttpPost]
-        public ActionResult filterSearch(string searchCriteria)
-        {
-            if (Session["User"] != null)
-            {
-                return RedirectToAction("SearchResults", new { search = searchCriteria });
-            }
 
-            else
-            {
-                return RedirectToAction("LogIn", "Home");
-            }
-        }
-        public ActionResult SearchResults(string search)
-        {
-            if (Session["User"] != null)
-            {
-                List<PERSON> foundPeople = new List<PERSON>();
-                List<Listing> foundListings = new List<Listing>();
-                List<PRESCRIBED> foundModules = new List<PRESCRIBED>();
 
-                foreach (PERSON p in model.People)
-                {
-                    if (p.PersonName.Equals(search))
-                    {
-                        foundPeople.Add(p);
-                    }
-                }
 
-                foreach (Listing l in model.Listings)
-                {
-                    if (l.BOOK.bookName.Equals(search))
-                    {
-                        foundListings.Add(l);
-                    }
-                }
-
-                foreach (PRESCRIBED p in model.PRESCRIBEDs)
-                {
-                    if (p.moduleCode.Equals(search) || p.BOOK.bookName.Equals(search))
-                    {
-                        foundModules.Add(p);
-                    }
-                }
-
-                ViewBag.searchText = search;
-                ViewBag.people = foundPeople;
-                ViewBag.listings = foundListings;
-                ViewBag.modules = foundModules;
-
-                return View();
-            }
-
-            else
-            {
-                return RedirectToAction("LogIn", "Home");
-            }
-        }
     }
 }
