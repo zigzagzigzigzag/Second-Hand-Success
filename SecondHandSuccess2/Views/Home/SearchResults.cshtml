@@ -34,24 +34,28 @@
             <tbody>
                 @foreach (var item in ViewBag.people)
                 {
-                    <tr>
-                        <td>
-                            @item.PersonName
-                        </td>
-                        <td>
-                            @item.PersonSurname
-                        </td>
-                        <td>
-                            @item.PersonEmail
-                        </td>
-                        <td>
-                            @item.PersonRating
-                        </td>
-                        <td>
-                            <a class="col-md-12 btn btn-light justify-content-end m-auto" style="margin-right:0px"
-                               @*href=@Url.Action(controllerName: "Home",actionName: "EditListing",routeValues: 0})*@>Report</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @item.PersonName
+                    </td>
+                    <td>
+                        @item.PersonSurname
+                    </td>
+                    <td>
+                        @item.PersonEmail
+                    </td>
+                    <td>
+                        @item.PersonRating
+                    </td>
+                    <td>
+                        <a class="col-md-12 btn btn-light justify-content-end m-auto" style="margin-right:0px"
+                           @*href=@Url.Action(controllerName: "Home",actionName: "EditListing",routeValues: 0})*@>Report User</a>
+                    </td>
+                    <td>
+                        <a class="col-md-12 btn btn-light justify-content-end m-auto" style="margin-right:0px"
+                           @*href=@Url.Action(controllerName: "Home",actionName: "EditListing",routeValues: 0})*@>Rate User</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
