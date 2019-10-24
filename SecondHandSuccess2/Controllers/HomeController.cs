@@ -55,18 +55,32 @@ namespace SecondHandSuccess2.Controllers
         }
         public ActionResult EditListing()
         {
+            if (Session["User"] != null)
+            {
+                string bookISBN = RouteData.Values["id"].ToString();
+                string uId = ((PERSON)Session["User"]).PersonIDNumber;
 
-            List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
+                Listing curList = model.Listings.Find(bookISBN, uId);
+                Session["currentListing"] = curList;
 
-            ViewBag.books = model.BOOKs;
+
+                List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
+
+                ViewBag.books = model.BOOKs;
 
 
-            ViewData["conditions"] =
-                new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
-                .Select(x => new { value = x, text = x }),
-                "value", "text", "Very Bad");
+                ViewData["conditions"] =
+                    new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
+                    .Select(x => new { value = x, text = x }),
+                    "value", "text", "Very Bad");
 
-            return View();
+                return View(curList);
+            }
+
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
         }
         public ActionResult AddListing()
         {
@@ -170,10 +184,11 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult deleteListing()
         {
 
-    public ActionResult getView()
-    {
-        return View(model.BOOKs);
-    }
+            string bookISBN = RouteData.Values["id"].ToString();
+            string uId = ((PERSON)Session["User"]).PersonIDNumber;
+            Listing toRemove = model.Listings.Find(bookISBN, uId);
+            model.Listings.Remove(toRemove);
+            model.SaveChanges();
 
             return RedirectToAction("UserHomePage", "Home");
         }
