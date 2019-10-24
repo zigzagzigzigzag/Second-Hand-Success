@@ -53,13 +53,7 @@ namespace SecondHandSuccess2.Controllers
                 return RedirectToAction("LogIn", "Home");
             }
         }
-
-       public ActionResult EditListing()
-       {      
-            return View();
-       }
-
-        public ActionResult AddListing()
+        public ActionResult EditListing()
         {
 
             List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
@@ -74,7 +68,25 @@ namespace SecondHandSuccess2.Controllers
 
             return View();
         }
+        public ActionResult AddListing()
+        {
+            if (Session["User"] != null)
+            {
+                List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
 
+                ViewData["conditions"] =
+                    new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
+                    .Select(x => new { value = x, text = x }),
+                    "value", "text", "Very Bad");
+
+                return View();
+            }
+
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
         [HttpPost]
         public ActionResult confirmNewListing()
         {
@@ -113,8 +125,6 @@ namespace SecondHandSuccess2.Controllers
 
             return RedirectToAction("UserHomePage", "Home");
         }
-
-
         [HttpPost]
         public ActionResult createNewBook()
         {
@@ -152,23 +162,39 @@ namespace SecondHandSuccess2.Controllers
             }
 
             return RedirectToAction("AddListing", "Home");
-
-
         }
-    
+        public ActionResult getView()
+        {
+            return View(model.BOOKs);
+        }
+        public ActionResult deleteListing()
+        {
 
     public ActionResult getView()
     {
         return View(model.BOOKs);
     }
 
+            return RedirectToAction("UserHomePage", "Home");
+        }
+        public ActionResult editListingPage()
+        {
+            string condition = Request.Form["conditions"];
+            var price = Request.Form["listingPrice"];
 
-    [HttpPost]
+            Listing current = (Listing)Session["currentListing"];
+            model.Listings.Find(current.bookISBN, current.personIDNumber).listingCondition = condition;
+            model.Listings.Find(current.bookISBN, current.personIDNumber).listingPrice = price;
+            model.SaveChanges();
+
+            return RedirectToAction("UserHomePage", "Home");
+        }
         public ActionResult LogOn()
         {
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
-            foreach (PERSON curP in model.People) {
+            foreach (PERSON curP in model.People)
+            {
                 if (curP.PersonUserName == uName)
             { if (curP.PersonPassword == uPassword)
                     {
@@ -196,7 +222,6 @@ namespace SecondHandSuccess2.Controllers
             }
             return RedirectToAction("LogIn", "Home");
         }
-
         [HttpPost]
         public Action UpdateListing()
         {
@@ -215,8 +240,63 @@ namespace SecondHandSuccess2.Controllers
             }
             return null;
         }
+        [HttpPost]
+        public ActionResult filterSearch(string searchCriteria)
+        {
+            if (Session["User"] != null)
+            {
+                return RedirectToAction("SearchResults", new { search = searchCriteria });
+            }
 
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
+        public ActionResult SearchResults(string search)
+        {
+            if (Session["User"] != null)
+            {
+                List<PERSON> foundPeople = new List<PERSON>();
+                List<Listing> foundListings = new List<Listing>();
+                List<PRESCRIBED> foundModules = new List<PRESCRIBED>();
 
+                foreach (PERSON p in model.People)
+                {
+                    if (p.PersonName.Equals(search))
+                    {
+                        foundPeople.Add(p);
+                    }
+                }
 
+                foreach (Listing l in model.Listings)
+                {
+                    if (l.BOOK.bookName.Equals(search))
+                    {
+                        foundListings.Add(l);
+                    }
+                }
+
+                foreach (PRESCRIBED p in model.PRESCRIBEDs)
+                {
+                    if (p.moduleCode.Equals(search) || p.BOOK.bookName.Equals(search))
+                    {
+                        foundModules.Add(p);
+                    }
+                }
+
+                ViewBag.searchText = search;
+                ViewBag.people = foundPeople;
+                ViewBag.listings = foundListings;
+                ViewBag.modules = foundModules;
+
+                return View();
+            }
+
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
     }
 }
