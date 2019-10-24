@@ -45,6 +45,7 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 ViewBag.Prescribed = model.PRESCRIBEDs;
+                ViewBag.modules = model.Modules;
                 ViewBag.User = Session["User"];
                 return View();
             }
@@ -87,7 +88,7 @@ namespace SecondHandSuccess2.Controllers
             if (Session["User"] != null)
             {
                 List<String> conditions = new List<string> { "Very Bad", "Bad", "Average", "Good", "Very Good" };
-
+                ViewBag.books = model.BOOKs;
                 ViewData["conditions"] =
                     new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
                     .Select(x => new { value = x, text = x }),
@@ -140,7 +141,7 @@ namespace SecondHandSuccess2.Controllers
             return RedirectToAction("UserHomePage", "Home");
         }
         [HttpPost]
-        public ActionResult createNewBook()
+        public ActionResult createNewBook(string pageDirect)
         {
 
             String ISBN = Request.Form["book.bookISBN"];
@@ -174,8 +175,15 @@ namespace SecondHandSuccess2.Controllers
                 }
                 
             }
-
-            return RedirectToAction("AddListing", "Home");
+            if(pageDirect == "Module")
+            {
+                return RedirectToAction("PrescribeTextbook", "User");
+            }
+            else
+            {
+                return RedirectToAction("AddListing", "Home");
+            }
+           
         }
         public ActionResult getView()
         {

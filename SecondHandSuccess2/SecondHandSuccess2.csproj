@@ -315,6 +315,7 @@
     <Content Include="Views\Admin\AddModule.cshtml" />
     <Content Include="Views\User\PrescribeTextbook.cshtml" />
     <Content Include="Views\Home\SearchResults.cshtml" />
+    <Content Include="Views\Admin\PromptLecturer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

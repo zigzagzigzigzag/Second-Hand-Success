@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{ var book = ViewBag.books as SecondHandSuccess2.Models.BOOK;}
+
 @model SecondHandSuccess2.Models.Module
 
 
@@ -26,28 +27,39 @@
           {
               @Html.AntiForgeryToken()
               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-              foreach (var item in ViewBag.Prescribed)
-            {
-                    if (@item.Module.moduleLecturer == (ViewBag.User.PersonIDNumber).Trim())
+
+                // if (@item.Module.moduleLecturer == (ViewBag.User.PersonIDNumber).Trim())
+
+                foreach (var module in ViewBag.modules)
+                {
+                    if (module.moduleLecturer == ViewBag.User.PersonIDNumber)
                     {
-                        <tr>
-                            <td>
-                                @item.Module.moduleCode
-                            </td>
-                            <td>
-                                @item.Module.moduleName
-                            </td>
-                            <td>
-                                @item.BOOK.bookName
-                            </td>
-                            <td>
-                                <input type="hidden" name="moduleNameHidden" value="maybe" id="moduleNameHidden" />
-                                <button class="btn btn-lg btn-primary btn-block text-uppercase" value=" @item.Module.moduleName" type="submit" name="moduleEditing">Edit</button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @module.moduleCode
+                                </td>
+                                <td>
+                                    @module.moduleName
+                                </td>
+                                <td>
+                                    @foreach (var item in ViewBag.Prescribed)
+                                    {
+                                        if (@item.Module.moduleLecturer == ViewBag.User.PersonIDNumber && @item.moduleCode ==module.moduleCode) {
+                                           @item.BOOK.bookName}
+                                    }
+                                </td>
+                                <td>
+                                    
+                                    <input type="hidden" name="moduleNameHidden" value="maybe" id="moduleNameHidden" />
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" value=" @module.moduleName" type="submit" name="moduleEditing">Edit</button>
+                                </td>
+                            </tr>
+                        }
                     }
+                    {
+                    }
+                }
             }
-         }
         </tbody>
     </table>
 </div>
