@@ -166,6 +166,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Registration.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\UniquenessValidator.cs" />
     <Compile Include="Models\User.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

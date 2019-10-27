@@ -1,5 +1,13 @@
 ﻿@model SecondHandSuccess2.Models.Listing
 @{ var book = ViewBag.books as SecondHandSuccess2.Models.BOOK;}
+@{
+    var existence = "The ISBN exists";
+}
+@{ string existingListingString = "User can only post one copy of a book";}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+
 
 <div id="addListing">
     @{
@@ -25,7 +33,7 @@
                 <div class="card card-signin my-5">
                     <div class="card-body text-center" id="addListingContainer1">
                         <h5 class="card-title text-center" id="listingInformation1">Listing Information</h5>
-
+                        <p id="existingListing">@existingListingString</p>
                         @using (Html.BeginForm("confirmNewListing", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
@@ -37,7 +45,7 @@
                                             Book Name
                                         </td>
                                         <td>
-                                            <div class="form-label-group text-center">
+                                            <div class="form-label-group text-center" id="rowBookName">
                                                 @Html.DropDownList("bookISBN", new SelectList(ViewBag.books, "bookISBN", "bookName", new { @class = "form-control" }))
                                                 @Html.ValidationMessageFor(model => model.bookISBN)
 
@@ -46,7 +54,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Price
+                                            Price R
                                         </td>
                                         <td>
                                             <div class="form-label-group text-center">
@@ -68,7 +76,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
+                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="submitExisting">Confirm</button>
 
                                         </td>
                                     </tr>
@@ -88,7 +96,7 @@
                     <div class="card-body text-center" id="addListingContainer2">
                         <h5 class="card-title text-center" id="listingInformation2">Add a new textbook</h5>
 
-                        @using (Html.BeginForm("createNewBook", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        @using (Html.BeginForm("createNewBook", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -98,14 +106,12 @@
                                         <td>
                                             ISBN
                                         </td>
-                                        <td>
+                                        <td id="rowOne">
                                             <div class="form-label-group text-center">
-                                               
-
                                                 @Html.TextBoxFor(model => book.bookISBN, new { @class = "form-control", @style = "margin:auto" })
-                                                @Html.ValidationMessageFor(model => book.bookISBN)
-
+                                                @Html.ValidationMessageFor(model => book.bookISBN, "", new { @class = "text-danger" })
                                             </div>
+                                            <p id="existenceString">@existence</p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -114,7 +120,7 @@
                                         </td>
                                         <td>
                                             @Html.TextBoxFor(model => book.bookName, new { @class = "form-control", @style = "margin:auto" })
-                                            @Html.ValidationMessageFor(model => book.bookName)
+                                            @Html.ValidationMessageFor(model => book.bookName, "", new { @class = "text-danger" })
                                         </td>
                                     </tr>
                                     <tr>
@@ -124,7 +130,7 @@
                                         <td>
                                             <div class="form-label-group text-center">
                                                 @Html.TextBoxFor(model => book.bookPublisher, new { @class = "form-control", @style = "margin:auto" })
-                                                @Html.ValidationMessageFor(model => book.bookPublisher)
+                                                @Html.ValidationMessageFor(model => book.bookPublisher, "", new { @class = "text-danger" })
 
                                             </div>
                                         </td>
@@ -136,7 +142,7 @@
                                         <td>
                                             <div class="form-label-group text-center">
                                                 @Html.TextBoxFor(model => book.bookAuthor, new { @class = "form-control", @style = "margin:auto" })
-                                                @Html.ValidationMessageFor(model => book.bookAuthor)
+                                                @Html.ValidationMessageFor(model => book.bookAuthor, "", new { @class = "text-danger" })
 
                                             </div>
                                         </td>
@@ -149,22 +155,22 @@
                                         <td>
                                             <div class="form-label-group text-center">
                                                 @Html.TextBoxFor(model => book.bookEdition, new { @class = "form-control", @type = "number", @style = "margin:auto" })
-                                                @Html.ValidationMessageFor(model => book.bookEdition)
+                                                @Html.ValidationMessageFor(model => book.bookEdition, "", new { @class = "text-danger" })
 
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td colspan="2">
-                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="pageDirect" value="Listing">Add</button>
-
+                                        <td colspan="2" >
+                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="pageDirect" value="Listing" id="submitButtonNewBook">Add</button>
                                         </td>
                                     </tr>
                                 </tbody>
 
                             </table>
                                                     }
+                        <p id="confirmation"></p>
                     </div>
                 </div>
             </div>
@@ -177,9 +183,6 @@
             border-color: #d4d4d4 !important;
             background-color: rgb(243, 243, 243);
         }
-
-
-
 
         .form-label-group {
             position: relative;
@@ -196,121 +199,15 @@
 
 </div>
 
-
-
-
-
-@*@{
-    ViewBag.Title = "Edit Listing";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<!DOCTYPE html>
-
-<html>
-<body>
-    <div class="row mt-md-3">
-        <h1 class="h1 col-md-12 text-center">Listing Information</h1>
-    </div>
-    <div class="row mt-md-5" style="margin-bottom:15px">
-        <form class="w-75 m-md-auto card p-1 my-5">
-            <fieldset class="border-primary">
-                <legend class="font-weight-bold">Listing Information</legend>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4">Textbook Name:</label>
-                            <div class="col-md-8">
-                                <input class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4">Asking Price:</label>
-                            <div class="col-md-8">
-                                <input class="form-control" type="number" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-2 justify-content-center" style="margin:auto">
-                        <div class="row p-2">
-                            <button class="btn btn-light btn-block">Confirm</button>
-                        </div>
-                        <div class="row p-2">
-                            <button class="btn btn-light btn-block">DELETE</button>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="row mt-md-5">
-        <form class="w-75 m-md-auto card p-1">
-            <fieldset>
-                <legend class="font-weight-bold">Add a New Textbook</legend>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-4" for="textbookName">Textbook Name:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookName" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookISBN">ISBN Number:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookISBN" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookPublisher">Publisher:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookPublisher" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookAuthor">Author:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="textbookAuthor" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-form-label col-md-4" for="textbookEdition">Edition:</label>
-                            <div class="col-md-8">
-                                <input type="number" class="form-control" id="textbookEdition" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-2 justify-content-center" style="margin:auto">
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">ADD</button>
-                        </div>
-                        <div class="row p-4">
-                            <button class="btn btn-light btn-block">DELETE</button>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</body>
-</html>
-<style>
-    label {
-        color: white;
-    }
-
-    .card {
-        background-color: #164f52;
-        border: none;
-        box-shadow: 0 0.7rem 0.7rem 0.5rem rgba(0, 0, 0, 0.2);
-    }
-
-    legend {
-        color: white;
-        padding-left: 15px;
-    }
-
-    fieldset {
-        padding: 5px;
-    }
-</style>*@
+<script>
+    $(document).ready(function () {
+        $("#existenceString").hide("slow");
+    });
+    $(document).ready(function () {
+        $("#existingListing").hide("slow");
+    });
+    $("#submitButtonNewBook").click(function () { ($("#existenceString").show("slow")); });
+    $("#submitExisting").click(function () { ($("#existingListing").show("slow")); });
+    $("#rowOne").click(function () { ($("#existenceString").hide("slow")); });
+    $("#rowBookName").click(function () { ($("#existingListing").hide("slow")); });
+</script>

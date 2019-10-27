@@ -19,75 +19,114 @@ namespace SecondHandSuccess2.Controllers
         {
             if (Session["User"] != null)
             {
-                ViewBag.Modules = model.Modules;
-                ViewBag.People = model.People;
-                return View();
+                PERSON currentUser = Session["User"] as PERSON;
+                if (currentUser.PersonType.Equals("Admin"))
+                {
+                    ViewBag.Modules = model.Modules;
+                    ViewBag.People = model.People;
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "Home");
+                }
+               
             }
             else
             {
-
                 return RedirectToAction("LogIn", "Home");
             }
-
         }
 
         public ActionResult AddModule()
-        {         
-            List<PERSON> people = new List<PERSON>();
-            foreach (var user in model.People)
+        {                    
+            if (Session["User"] != null)
             {
-                if (user.PersonType.Equals("Lecturer"))
+                PERSON currentUser = Session["User"] as PERSON;
+                if (currentUser.PersonType.Equals("Admin"))
                 {
-                    people.Add(user);
+                    List<PERSON> people = new List<PERSON>();
+                    foreach (var user in model.People)
+                    {
+                        if (user.PersonType.Equals("Lecturer"))
+                        {
+                            people.Add(user);
+                        }
+                    }
+                    ViewBag.lecturers = people;
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "Home");
                 }
             }
-            ViewBag.lecturers = people;
-            return View();
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
         }
 
         [HttpPost]
         public ActionResult addModule()
         {
-            String moduleName = Request.Form["moduleName"];
-            String moduleCode = Request.Form["moduleCode"];
-            String lecturer = Request.Form["personID"];
-
-            bool exists = false;
-            foreach (Module module in model.Modules)
+            if (Session["User"] != null)
             {
-                if (module.moduleCode.Equals(moduleCode))
-                {
-                    exists = true;
-                }
-            }
+                    PERSON currentUser = Session["User"] as PERSON;
+                    if (currentUser.PersonType.Equals("Admin"))
+                    {
+                    String moduleName = Request.Form["moduleName"];
+                    String moduleCode = Request.Form["moduleCode"];
+                    String lecturer = Request.Form["personID"];
 
-            if (!exists)
-            {
-               
-          
-                if (ModelState.IsValid)
-                {
-
-                    Module module = new Module();
-                    module.moduleCode = moduleCode;
-                    module.moduleName = moduleName;
-                    module.moduleLecturer = lecturer;
-
-                    
-                    model.Modules.Add(module);
-                    model.SaveChanges();
-                    foreach(PERSON person in model.People)
-                    { 
-                        if (person.PersonIDNumber.Equals(lecturer))
+                    bool exists = false;
+                    foreach (Module module in model.Modules)
+                    {
+                        if (module.moduleCode.Equals(moduleCode) || module.moduleName.Equals(moduleName))
                         {
-                            string bodyText = "Dear "+person.PersonName+ ",\r\n Please prescribe a textbook for " + moduleName;
-                            sendEmail(person.PersonEmail, "Prescibe Textbook",bodyText);
+                            exists = true;
                         }
                     }
-                    
+
+                    if (!exists)
+                    {
+
+                        if (ModelState.IsValid)
+                        {
+
+                            Module module = new Module();
+                            module.moduleCode = moduleCode;
+                            module.moduleName = moduleName;
+                            module.moduleLecturer = lecturer;
+
+
+                            model.Modules.Add(module);
+                            model.SaveChanges();
+                            foreach (PERSON person in model.People)
+                            {
+                                if (person.PersonIDNumber.Equals(lecturer))
+                                {
+                                    string bodyText = "Dear " + person.PersonName + ",\r\n Please prescribe a textbook for " + moduleName;
+                                    sendEmail(person.PersonEmail, "Prescibe Textbook", bodyText);
+                                }
+                            }
+
+                        }
+                        return RedirectToAction("AdminHome", "Admin");
+                    }
+                    return new HttpStatusCodeResult(204);
+
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "Home");
                 }
             }
-                return RedirectToAction("AdminHome", "Admin");
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+           
         }
 
         [HttpPost]
@@ -101,11 +140,11 @@ namespace SecondHandSuccess2.Controllers
             List<PERSON> people = new List<PERSON>();         
             foreach (var user in model.People)
             {
-                people.Add(user);
-            //    if (user.PersonType.Equals("Lecturer"))
-            //    {
-            //        people.Add(user);
-            //    }
+                //people.Add(user);
+                if (user.PersonType.Equals("Lecturer"))
+                {
+                    people.Add(user);
+                }
             }
 
             ViewBag.lecturers = people;
@@ -128,8 +167,7 @@ namespace SecondHandSuccess2.Controllers
 
         private void sendEmail(string lecturer,string subjectInput,string bodyText)
         {
-            // Remove next line for final test
-            //string temp = lecturer;
+            // Remove next line for final test       
             //lecturer = "s216458366@mandela.ac.za";
 
             try

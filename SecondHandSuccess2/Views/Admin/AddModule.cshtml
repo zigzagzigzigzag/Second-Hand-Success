@@ -1,4 +1,12 @@
 ﻿@model SecondHandSuccess2.Models.Module
+@{
+    var existence = "The Module Code or Name exists";
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+
+
 
 
 <div id="addModule">
@@ -18,7 +26,7 @@
                 <div class="card card-signin my-5">
                     <div class="card-body text-center" id="addModuleContainer">
                         <h5 class="card-title text-center" id="moduleInformation">Module Information</h5>
-
+                        <p id="existenceString">@existence</p>
                         @using (Html.BeginForm("addModule", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
@@ -26,7 +34,7 @@
                             <table class="table table-dark" id="tableModule">
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td id="rowOne">
                                             Module Name
                                         </td>
                                         <td>
@@ -37,7 +45,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td id="rowTwo">
                                             Module Code
                                         </td>
                                         <td>
@@ -64,10 +72,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Confirm</button>
-
-
-
+                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="submitButtonNewModule">Confirm</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -102,3 +107,12 @@
     </style>
 
 </div>
+<script>
+    $(document).ready(function () {
+        $("#existenceString").hide("slow");
+    });
+   
+    $("#submitButtonNewModule").click(function () { ($("#existenceString").show("slow")); });
+    $("#rowOne").click(function () { ($("#existenceString").hide("slow")); });
+    $("#rowTwo").click(function () { ($("#existenceString").hide("slow")); });
+</script>

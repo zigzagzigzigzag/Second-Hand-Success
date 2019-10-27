@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using SecondHandSuccess2.Models;
 
+
 namespace SecondHandSuccess2.Controllers
 {
     public class HomeController : Controller
@@ -44,10 +45,18 @@ namespace SecondHandSuccess2.Controllers
         {
             if (Session["User"] != null)
             {
-                ViewBag.Prescribed = model.PRESCRIBEDs;
-                ViewBag.modules = model.Modules;
-                ViewBag.User = Session["User"];
-                return View();
+                PERSON currentUser = Session["User"] as PERSON;
+                if (currentUser.PersonType.Equals("Lecturer"))
+                {
+                    ViewBag.Prescribed = model.PRESCRIBEDs;
+                    ViewBag.modules = model.Modules;
+                    ViewBag.User = Session["User"];
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "Home");
+                }
             }
             else
             {
@@ -120,7 +129,7 @@ namespace SecondHandSuccess2.Controllers
                 }
             }
 
-            if (exists)
+            if (!exists)
             {
                 condition = Request.Form["conditions"];
                 price = Request.Form["listingPrice"];
@@ -136,55 +145,20 @@ namespace SecondHandSuccess2.Controllers
                     model.Listings.Add(listing);
                     model.SaveChanges();
                 }
-            }
-
-            return RedirectToAction("UserHomePage", "Home");
-        }
-        [HttpPost]
-        public ActionResult createNewBook(string pageDirect)
-        {
-
-            String ISBN = Request.Form["book.bookISBN"];
-            String name = Request.Form["book.bookName"];
-            String publisher = Request.Form["book.bookPublisher"];
-            String author = Request.Form["book.bookAuthor"];
-            String edition = Request.Form["book.bookEdition"];
-            
-            bool exists = false;
-            foreach (BOOK book in model.BOOKs)
-            {
-                if (book.bookISBN.Equals(ISBN))
-                {
-                    exists = true;
-                }
-            }
-
-            if (!exists)
-            {
-                if (ModelState.IsValid)
-                {
-
-                    BOOK book = new BOOK();
-                    book.bookISBN = ISBN;
-                    book.bookName = name;
-                    book.bookPublisher = publisher;
-                    book.bookAuthor = author;
-                    book.bookEdition = edition;
-                    model.BOOKs.Add(book);
-                    model.SaveChanges();
-                }
-                
-            }
-            if(pageDirect == "Module")
-            {
-                return RedirectToAction("PrescribeTextbook", "User");
+                return RedirectToAction("UserHomePage", "Home");
             }
             else
             {
-                return RedirectToAction("AddListing", "Home");
+                return new HttpStatusCodeResult(204);
             }
+
            
         }
+
+     
+       
+
+       
         public ActionResult getView()
         {
             return View(model.BOOKs);

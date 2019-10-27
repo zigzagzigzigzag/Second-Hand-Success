@@ -16,13 +16,16 @@ namespace SecondHandSuccess2.Models
         }
 
         [Key]
-        [StringLength(50)]
+        [StringLength(7, MinimumLength = 7, ErrorMessage = "Code length must be 7 characters")]
+        [Required(ErrorMessage = "Module Code required")]
         public string moduleCode { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage = "Module Name required")]
         public string moduleName { get; set; }
 
         [StringLength(30)]
+        [Required(ErrorMessage = "Lecturer required")]
         public string moduleLecturer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
