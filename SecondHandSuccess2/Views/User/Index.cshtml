@@ -9,6 +9,9 @@
 
 <table class="table-user">
     <tr class="user-tr">
+        <th class="user-td">
+            @Html.DisplayNameFor(model => model.PersonIDNumber)
+        </th>
         <th class="user-th">
             @Html.DisplayNameFor(model => model.PersonName)
         </th>
@@ -38,41 +41,47 @@
 
     @foreach (var item in Model)
     {
-        using (Html.BeginForm("Delete", "User", new { id = item.PersonIDNumber }))
+        using (Html.BeginForm("Delete", "User", new { id = item.PersonIDNumber}))
         {
-            <tr class="user-tr">
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonName)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonSurname)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonCellNumber)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonEmail)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonUserName)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonPassword)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonType)
-                </td>
-                <td class="user-td">
-                    @Html.DisplayFor(modelItem => item.PersonRating)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PersonIDNumber })
+            @Html.AntiForgeryToken()
 
-                    <input type="submit" value="Remove" />
+<tr class="user-tr">
 
-                </td>
-            </tr>
-        }
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonIDNumber)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonName)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonSurname)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonCellNumber)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonEmail)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonUserName)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonPassword)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonType)
+    </td>
+    <td class="user-td">
+        @Html.DisplayFor(modelItem => item.PersonRating)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.PersonIDNumber}  ) |
+
+        <input type="submit" value="Remove" onclick=" return confirm('Are you sure you want Remove this user?')"/>
+
+    </td>
+</tr>
     }
+}
 
 </table>

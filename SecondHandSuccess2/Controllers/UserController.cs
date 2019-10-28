@@ -78,7 +78,7 @@ namespace SecondHandSuccess2.Controllers
         // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PersonIDNumber,PersonName,PersonSurname,PersonCellNumber,PersonEmail,PersonUserName,PersonPassword,PersonType,PersonRating")] PERSON pERSON)
         {
@@ -91,7 +91,7 @@ namespace SecondHandSuccess2.Controllers
             return View(pERSON);
         }
 
-        // GET: User/Delete/5
+        //GET: User/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)

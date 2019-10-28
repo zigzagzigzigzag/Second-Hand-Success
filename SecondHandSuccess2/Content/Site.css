@@ -276,3 +276,13 @@ h1{
     border: 1px solid white;
 }
 /*User Table End*/
+
+.editHeading
+{
+    color: #9bc4bc;
+}
+
+.editText 
+{
+    color: white;
+}

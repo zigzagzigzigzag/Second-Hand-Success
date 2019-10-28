@@ -5,74 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="editHeading">Are you sure you want to delete this User?</h3>
 <div>
-    <h4>PERSON</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonName)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonName)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonSurname)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonSurname)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonCellNumber)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonCellNumber)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonEmail)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonEmail)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonUserName)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonUserName)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonPassword)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonPassword)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonType)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonType)
         </dd>
 
-        <dt>
+        <dt class="editHeading">
             @Html.DisplayNameFor(model => model.PersonRating)
         </dt>
 
-        <dd>
+        <dd class="editText">
             @Html.DisplayFor(model => model.PersonRating)
         </dd>
 
