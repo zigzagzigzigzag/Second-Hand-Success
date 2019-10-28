@@ -91,6 +91,7 @@ namespace SecondHandSuccess2.Controllers
             return View(pERSON);
         }
 
+
         //GET: User/Delete/5
         public ActionResult Delete(string id)
         {

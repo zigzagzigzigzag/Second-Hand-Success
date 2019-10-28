@@ -45,7 +45,8 @@ namespace SecondHandSuccess2.Models
         [StringLength(50)]
         public string PersonPassword { get; set; }
 
-        [Display(Name = "What type of user are you")]
+        [Display(Name = "What type of user are you? " +
+            "Type Person or Lecturer")]
         [StringLength(50)]
         public string PersonType { get; set; }
 

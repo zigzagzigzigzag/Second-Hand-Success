@@ -269,10 +269,11 @@ h1{
 {
     text-align: center;
     border: 1px solid white;
+    color: white;
 }
 
 .user-th {
-    text-align: Left;
+    text-align: center;
     border: 1px solid white;
 }
 /*User Table End*/
