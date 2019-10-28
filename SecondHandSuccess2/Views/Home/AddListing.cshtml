@@ -8,26 +8,11 @@
 @Scripts.Render("~/Scripts/jquery.validate.min.js")
 @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>            
-                <li class="nav-item">@Html.ActionLink("UserHomePage", "UserHomePage", "Home")</li>  
-            </ul>
-        </div>
-
-</nav>
 <div id="addListing">
     @{
         ViewBag.Title = "Add Listing";
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-
-
-
-
-
 
 
     <div class="container">
@@ -211,8 +196,8 @@
     $(document).ready(function () {
         $("#existingListing").hide("slow");
     });
-    $("#submitButtonNewBook").click(function () { ($("#existenceString").show("slow")); });
-    $("#submitExisting").click(function () { ($("#existingListing").show("slow")); });
+    $("#submitButtonNewBook").click(function () { ($("#existenceString").show("slow")).fadeIn(2000); });
+    $("#submitExisting").click(function () { ($("#existingListing").show("slow")).fadeIn(2000); });
     $("#rowOne").click(function () { ($("#existenceString").hide("slow")); });
     $("#rowBookName").click(function () { ($("#existingListing").hide("slow")); });
 </script>
