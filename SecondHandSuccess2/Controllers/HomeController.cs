@@ -115,20 +115,29 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult confirmNewListing()
         {
             String bookISBN = Request.Form["bookISBN"];
-
+            PERSON currentUser = Session["User"] as PERSON;
             String condition = " ";
             String price = " ";
             DateTime dateTime = DateTime.UtcNow;
             //String date = dateTime.ToString("yy-MM-dd");
             bool exists = false;
-            foreach (BOOK book in model.BOOKs)
+            //foreach (BOOK book in model.BOOKs)
+            //{
+            //    if (book.bookISBN.Equals(bookISBN))
+            //    {
+            //        exists = true;
+            //    }
+            //}
+            foreach(Listing listing in model.Listings)
             {
-                if (book.bookISBN.Equals(bookISBN))
-                {
-                    exists = true;
+                if (listing.personIDNumber.Equals(currentUser.PersonIDNumber))
+                {                  
+                    if (bookISBN.Equals(listing.bookISBN))
+                    {
+                        exists = true;
+                    }
                 }
             }
-
             if (!exists)
             {
                 condition = Request.Form["conditions"];
