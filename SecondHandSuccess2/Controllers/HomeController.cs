@@ -199,22 +199,24 @@ namespace SecondHandSuccess2.Controllers
 
         public ActionResult HomePage()
         {
-                if (Session["CurrentType"].ToString().Equals("Person"))
-                {
-                    return RedirectToAction("UserHomePage", "Home");
-                }
-                else if (Session["CurrentType"].ToString().Equals("Lecturer"))
-                {
-                    return RedirectToAction("LecturerHomePage", "Home");
-                }
-                else if (Session["CurrentType"].ToString().Equals("Admin"))
-                {
-                    return RedirectToAction("AdminHome", "Admin");
-                }
-            
-
-            return RedirectToAction("LogIn", "Home");
+            if (Session["CurrentType"].ToString().Equals("Person"))
+            {
+                return RedirectToAction("UserHomePage", "Home");
+            }
+            else if (Session["CurrentType"].ToString().Equals("Lecturer"))
+            {
+                return RedirectToAction("LecturerHomePage", "Home");
+            }
+            else if (Session["CurrentType"].ToString().Equals("Admin"))
+            {
+                return RedirectToAction("AdminHome", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
         }
+
 
         public ActionResult LogOn()
         {
