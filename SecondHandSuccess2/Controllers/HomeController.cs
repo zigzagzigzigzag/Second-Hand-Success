@@ -14,13 +14,13 @@ namespace SecondHandSuccess2.Controllers
         public ActionResult Index()
         {
             Session.Contents.RemoveAll();
-            return RedirectToAction("LogIn","Home");
+            return RedirectToAction("LogIn", "Home");
         }
 
         public ActionResult LogIn()
         {
-            if(ViewBag.passError == null)
-            ViewBag.passError = "";
+            if (ViewBag.passError == null)
+                ViewBag.passError = "";
 
             return View();
         }
@@ -128,10 +128,10 @@ namespace SecondHandSuccess2.Controllers
             //        exists = true;
             //    }
             //}
-            foreach(Listing listing in model.Listings)
+            foreach (Listing listing in model.Listings)
             {
                 if (listing.personIDNumber.Equals(currentUser.PersonIDNumber))
-                {                  
+                {
                     if (bookISBN.Equals(listing.bookISBN))
                     {
                         exists = true;
@@ -161,13 +161,13 @@ namespace SecondHandSuccess2.Controllers
                 return new HttpStatusCodeResult(204);
             }
 
-           
+
         }
 
-     
-       
 
-       
+
+
+
         public ActionResult getView()
         {
             return View(model.BOOKs);
@@ -199,10 +199,15 @@ namespace SecondHandSuccess2.Controllers
         {
             String uName = Request.Form["PersonUserName"];
             String uPassword = Request.Form["PersonPassword"];
+            Boolean userFound = false;
+            Session["uNameError"] = "";
+            Session["passError"] = "";
             foreach (PERSON curP in model.People)
             {
                 if (curP.PersonUserName == uName)
-            { if (curP.PersonPassword == uPassword)
+                {
+                    userFound = true;
+                    if (curP.PersonPassword == uPassword)
                     {
                         Session["User"] = curP;
                         personID = curP.PersonIDNumber;
@@ -220,11 +225,16 @@ namespace SecondHandSuccess2.Controllers
                         }
 
                     }
-                    else {
-                        ViewBag.passError = "Incorrect";
+                    else
+                    {
+                        Session["passError"] = "Incorrect Password";
                         return RedirectToAction("LogIn", "Home");
                     }
                 }
+            }
+            if (!userFound)
+            {
+                Session["uNameError"] = "Username does not Exist";
             }
             return RedirectToAction("LogIn", "Home");
         }
