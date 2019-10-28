@@ -16,6 +16,7 @@ namespace SecondHandSuccess2.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+           
             modelBuilder.Entity<PERSON>()
                 .Property(e => e.PersonName)
                 .IsUnicode(false);

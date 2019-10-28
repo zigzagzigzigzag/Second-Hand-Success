@@ -18,36 +18,43 @@ namespace SecondHandSuccess2.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "ID Number")]
-        [StringLength(13)]
+        [StringLength(13,MinimumLength =13,ErrorMessage =" ID Number must be 13 Characters")]
+        [Required(ErrorMessage = "ID Number required")]
         public string PersonIDNumber { get; set; }
 
         [Display(Name = "First Name")]
         [StringLength(50)]
+        [Required(ErrorMessage = "First Name required")]
         public string PersonName { get; set; }
 
         [Display(Name = "Surname")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Surname required")]
         public string PersonSurname { get; set; }
 
         [Display(Name = "Cell number")]
-        [StringLength(10)]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Cell Number must be 10 Digits")]
+        [Required(ErrorMessage = "Cell Number required")]
         public string PersonCellNumber { get; set; }
 
         [Display(Name = "Email address")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Email Address required")]
         public string PersonEmail { get; set; }
 
         [Display(Name = "User Name")]
         [StringLength(50)]
+        [Required(ErrorMessage = "User Name required")]
         public string PersonUserName { get; set; }
 
         [Display(Name = "Password")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Password required")]
         public string PersonPassword { get; set; }
 
-        [Display(Name = "What type of user are you? " +
-            "Type Person or Lecturer")]
+        [Display(Name = "What type of user are you?")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Please Select a User Type")]
         public string PersonType { get; set; }
 
         [StringLength(50)]
