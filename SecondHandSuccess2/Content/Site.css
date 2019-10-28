@@ -57,6 +57,18 @@ menuitem {
     color: #9BC4BC;
 }
 
+.existenceString{
+    color:red;
+}
+
+#existenceString{
+    color:red;
+   
+}
+
+#existingListing{
+      color:red;
+}
 
 .classPanelModule {
     padding: 1em;

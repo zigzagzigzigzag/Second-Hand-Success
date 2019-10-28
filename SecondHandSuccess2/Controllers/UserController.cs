@@ -133,28 +133,87 @@ namespace SecondHandSuccess2.Controllers
             currentModuleName = moduleEditing;
 
             
-            return RedirectToAction("PrescribeTextbook", "User");
+            return RedirectToAction("PrescribeTextbook", "User"," ");
         }
 
 
         
 
         private static string currentModuleName;
+        //public ActionResult PrescribeTextbook()
+        //{
+        //    if (Session["User"] != null)
+        //    {
+        //        PERSON currentUser = Session["User"] as PERSON;
+        //        if (currentUser.PersonType.Equals("Lecturer"))
+        //        {
+        //            List<Module> modules = new List<Module>();
+        //            foreach (var module in model.Modules)
+        //            {
+        //                modules.Add(module);
+        //            }
+        //            ViewBag.module = currentModuleName;
+        //            ViewBag.modules = modules;
+        //            ViewBag.books = model.BOOKs;
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("LogIn", "Home");
+        //        }
+        //    }
+        //    else
+        //    { 
+        //        return RedirectToAction("LogIn", "Home");
+        //    }
+
+        //}
+        public static string existence = " ";
+      
         public ActionResult PrescribeTextbook()
         {
-            List<Module> modules = new List<Module>();
-            foreach (var module in model.Modules)
+
+            ViewBag.existence = existence;
+            if (existence.Length>2)
             {
-                modules.Add(module);
+                ViewBag.existence = existence;
             }
-            ViewBag.module = currentModuleName;
-            ViewBag.modules = modules;
-            ViewBag.books = model.BOOKs;
-            return View();
+            if (Session["User"] != null)
+            {
+                PERSON currentUser = Session["User"] as PERSON;
+                if (currentUser.PersonType.Equals("Lecturer"))
+                {
+                    List<Module> modules = new List<Module>();
+                    foreach (var module in model.Modules)
+                    {
+                        modules.Add(module);
+                    }
+                    ViewBag.module = currentModuleName;
+                    ViewBag.modules = modules;
+                    ViewBag.books = model.BOOKs;
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+
         }
+
+        //public ActionResult sendBag()
+        //{
+        //  existence = "ISBN exists already";
+        //  return RedirectToAction("PrescribeTextbook", "User");
+        //}
 
         public ActionResult confirmPrescribeTextbook()
         {
+            
             string ISBN = Request.Form["bookISBN"];
             DateTime dateTime = DateTime.UtcNow;
             List< Module > modules = new List<Module>();
@@ -181,14 +240,79 @@ namespace SecondHandSuccess2.Controllers
                 {
                     if(prescribed.moduleCode.Equals(existingPrescription.moduleCode))
                     {
-                        model.PRESCRIBEDs.Remove(existingPrescription);
+                        exists = true;
                     }
                 }
-                model.PRESCRIBEDs.Add(prescribed);             
-                model.SaveChanges();
+                if (exists)
+                {
+                    return new HttpStatusCodeResult(204);
+                }
+                else
+                {
+                    model.PRESCRIBEDs.Add(prescribed);
+                    model.SaveChanges();
+                    return RedirectToAction("LecturerHomePage", "Home");
+                }
+                
+            }
+            else
+            {
+                return View(prescribed);
             }
 
-            return RedirectToAction("LecturerHomePage", "Home");
+           
         }
+
+        [HttpPost]
+        public ActionResult createNewBook(string pageDirect)
+        {
+
+            String ISBN = Request.Form["book.bookISBN"];
+            String name = Request.Form["book.bookName"];
+            String publisher = Request.Form["book.bookPublisher"];
+            String author = Request.Form["book.bookAuthor"];
+            String edition = Request.Form["book.bookEdition"];
+            bool exists = false;
+            foreach (BOOK book in model.BOOKs)
+            {
+                if (book.bookISBN.Equals(ISBN))
+                {
+                    exists = true;
+                }
+            }
+
+            if (!exists)
+            {
+                BOOK book = new BOOK();
+
+                if (ModelState.IsValid)
+                {
+                    book.bookISBN = ISBN;
+                    book.bookName = name;
+                    book.bookPublisher = publisher;
+                    book.bookAuthor = author;
+                    book.bookEdition = edition;
+                    model.BOOKs.Add(book);
+                    model.SaveChanges();
+                    if (pageDirect == "Module")
+                    {
+                        return RedirectToAction("PrescribeTextbook", "User");
+                    }
+                    else
+                    {
+                        return RedirectToAction("AddListing", "Home");
+                    }
+                }
+                else
+                {
+                    return View("PrescribeTextbook", book);
+                }
+
+            }
+           
+                return new HttpStatusCodeResult(204);
+                
+        }
+
     }
 }

@@ -26,6 +26,8 @@ namespace SecondHandSuccess2.Models
         public DateTime? listingDate { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage ="Price is required")]
+        [Range(1, 2000, ErrorMessage = "Must be greater than 0")]
         public string listingPrice { get; set; }
 
         public virtual BOOK BOOK { get; set; }

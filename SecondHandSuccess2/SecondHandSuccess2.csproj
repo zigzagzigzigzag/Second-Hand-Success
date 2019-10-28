@@ -166,6 +166,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Registration.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\UniquenessValidator.cs" />
     <Compile Include="Models\User.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -316,6 +317,7 @@
     <Content Include="Views\Admin\AddModule.cshtml" />
     <Content Include="Views\User\PrescribeTextbook.cshtml" />
     <Content Include="Views\Home\SearchResults.cshtml" />
+    <Content Include="Views\Admin\PromptLecturer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
