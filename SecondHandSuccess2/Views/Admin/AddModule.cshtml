@@ -15,12 +15,10 @@
     }
 
 
-    <div class="container">
-        @*<div class="row">*@
+    <div class="container">   
             <div class="col-md-7 row align-items-center" style="">
                 <h1 class="h1 col-md-6" id="addModuleTitle">Add a Module</h1>
-
-                @*<a class="col-md-2 btn btn-light " href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0) style="max-width:150px">Log Out</a>*@
+                <a class="col-md-2 btn btn-light " href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0) style="max-width:150px">Log Out</a>
             </div>
         <div class="row" style="margin:20px">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -113,7 +111,7 @@
         $("#existenceString").hide("slow");
     });
    
-    $("#submitButtonNewModule").click(function () { ($("#existenceString").show("slow")).fadeIn(2000); });
+    $("#submitButtonNewModule").click(function () { ($("#existenceString").delay(2000).show("slow")) });
     $("#rowOne").click(function () { ($("#existenceString").hide("slow")); });
     $("#rowTwo").click(function () { ($("#existenceString").hide("slow")); });
 </script>

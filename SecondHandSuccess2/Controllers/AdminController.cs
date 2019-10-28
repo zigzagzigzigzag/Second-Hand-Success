@@ -24,6 +24,17 @@ namespace SecondHandSuccess2.Controllers
                 {
                     ViewBag.Modules = model.Modules;
                     ViewBag.People = model.People;
+                   
+                    List<PERSON> lectures = new List<PERSON>();
+                    foreach (var user in model.People)
+                    {
+                        if (user.PersonType.Equals("Lecturer"))
+                        {
+                           lectures.Add(user);
+                        }
+                    }
+
+                    ViewBag.lecturerList = lectures;
                     return View();
                 }
                 else
@@ -106,7 +117,7 @@ namespace SecondHandSuccess2.Controllers
                             {
                                 if (person.PersonIDNumber.Equals(lecturer))
                                 {
-                                    string bodyText = "Dear " + person.PersonName + ",\r\n Please prescribe a textbook for " + moduleName;
+                                    string bodyText = "Dear " + person.PersonName + ",\r\nPlease prescribe a textbook for " + moduleName;
                                     sendEmail(person.PersonEmail, "Prescibe Textbook", bodyText);
                                 }
                             }
@@ -157,7 +168,7 @@ namespace SecondHandSuccess2.Controllers
             {
                 if (person.PersonType.Equals("Lecturer"))
                 {
-                    string bodyText = "Dear " + person.PersonName + ",\r\n Please update your modules' textbooks ";
+                    string bodyText = "Dear " + person.PersonName + ",\r\nPlease update your modules' textbooks ";
                     string subject = "Update Modules' textbooks";
                     sendEmail(person.PersonEmail,subject,bodyText);
                 }

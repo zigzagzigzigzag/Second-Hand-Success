@@ -241,18 +241,22 @@ namespace SecondHandSuccess2.Controllers
                     if(prescribed.moduleCode.Equals(existingPrescription.moduleCode))
                     {
                         exists = true;
+                       // existingPrescription.bookISBN = ISBN;
+                        model.PRESCRIBEDs.Remove(existingPrescription);  
+                        model.PRESCRIBEDs.Add(prescribed);
                     }
                 }
-                if (exists)
-                {
-                    return new HttpStatusCodeResult(204);
-                }
-                else
-                {
-                    model.PRESCRIBEDs.Add(prescribed);
+                //if (exists)
+                //{
+                    
+                //    return new HttpStatusCodeResult(204);
+                //}
+                //else
+                //{
+                  //  model.PRESCRIBEDs.Add(prescribed);
                     model.SaveChanges();
                     return RedirectToAction("LecturerHomePage", "Home");
-                }
+                //}
                 
             }
             else

@@ -1,4 +1,11 @@
-﻿<div id="adminHome">
+﻿@{ 
+    var lecturerList = ViewBag.lecturerList;
+}
+@{ 
+    var space = " ";
+}
+
+<div id="adminHome">
 
     @{
         ViewBag.Title = "AdminHome";
@@ -36,13 +43,21 @@
                         @foreach (var item in ViewBag.Modules)
             {
 
-                         
                             <tr class="tableItem">
                                 <td>
                                     @item.moduleCode
                                 </td>
                                 <td>
-                                    @item.moduleLecturer
+                                    @*@item.moduleLecturer*@
+                                    @foreach(var person in lecturerList)
+                                    {
+                                        if (@person.PersonIDNumber ==@item.moduleLecturer)
+                                        {
+                                            @person.PersonName
+                                            @space
+                                            @person.PersonSurname
+                                        }
+                                    }
                                 </td>
                                 <td>
                                     @item.moduleName
