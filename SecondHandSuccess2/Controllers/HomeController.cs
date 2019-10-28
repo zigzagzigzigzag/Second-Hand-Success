@@ -102,7 +102,6 @@ namespace SecondHandSuccess2.Controllers
                     new SelectList(new[] { "Very Bad", "Bad", "Average", "Good", "Very Good" }
                     .Select(x => new { value = x, text = x }),
                     "value", "text", "Very Bad");
-
                 return View();
             }
 
@@ -160,13 +159,7 @@ namespace SecondHandSuccess2.Controllers
             {
                 return new HttpStatusCodeResult(204);
             }
-
-
         }
-
-
-
-
 
         public ActionResult getView()
         {
@@ -174,47 +167,60 @@ namespace SecondHandSuccess2.Controllers
         }
         public ActionResult deleteListing()
         {
-
-            string bookISBN = RouteData.Values["id"].ToString();
-            string uId = ((PERSON)Session["User"]).PersonIDNumber;
-            Listing toRemove = model.Listings.Find(bookISBN, uId);
-            model.Listings.Remove(toRemove);
-            model.SaveChanges();
-
-            return RedirectToAction("UserHomePage", "Home");
-        }
-        public ActionResult editListingPage()
-        {
-            string condition = Request.Form["conditions"];
-            var price = Request.Form["listingPrice"];
-
-            Listing current = (Listing)Session["currentListing"];
-            model.Listings.Find(current.bookISBN, current.personIDNumber).listingCondition = condition;
-            model.Listings.Find(current.bookISBN, current.personIDNumber).listingPrice = price;
-            model.SaveChanges();
-
-            return RedirectToAction("UserHomePage", "Home");
-        }
-
-
-        public ActionResult HomePage()
-        {
-            if (Session["CurrentType"].ToString().Equals("Person"))
+            if (Session["User"] != null)
             {
+                string bookISBN = RouteData.Values["id"].ToString();
+                string uId = ((PERSON)Session["User"]).PersonIDNumber;
+                Listing toRemove = model.Listings.Find(bookISBN, uId);
+                model.Listings.Remove(toRemove);
+                model.SaveChanges();
+
                 return RedirectToAction("UserHomePage", "Home");
-            }
-            else if (Session["CurrentType"].ToString().Equals("Lecturer"))
-            {
-                return RedirectToAction("LecturerHomePage", "Home");
-            }
-            else if (Session["CurrentType"].ToString().Equals("Admin"))
-            {
-                return RedirectToAction("AdminHome", "Admin");
             }
             else
             {
                 return RedirectToAction("LogIn", "Home");
             }
+        }
+        public ActionResult editListingPage()
+        {
+            if (Session["User"] != null)
+            {
+                string condition = Request.Form["conditions"];
+                var price = Request.Form["listingPrice"];
+
+                Listing current = (Listing)Session["currentListing"];
+                model.Listings.Find(current.bookISBN, current.personIDNumber).listingCondition = condition;
+                model.Listings.Find(current.bookISBN, current.personIDNumber).listingPrice = price;
+                model.SaveChanges();
+
+                return RedirectToAction("UserHomePage", "Home");
+            }
+            else
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+        }
+
+
+        public ActionResult HomePage()
+        {
+            if (Session["User"] != null)
+            {
+                if (Session["CurrentType"].ToString().Equals("Person"))
+                {
+                    return RedirectToAction("UserHomePage", "Home");
+                }
+                else if (Session["CurrentType"].ToString().Equals("Lecturer"))
+                {
+                    return RedirectToAction("LecturerHomePage", "Home");
+                }
+                else if (Session["CurrentType"].ToString().Equals("Admin"))
+                {
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+            }
+            return RedirectToAction("LogIn", "Home");
         }
 
 
