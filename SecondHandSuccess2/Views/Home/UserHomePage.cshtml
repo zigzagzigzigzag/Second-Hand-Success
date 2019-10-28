@@ -5,46 +5,38 @@
 
 <div class="row align-items-center">
     <h1 class="h1 col-md-5">My Listings</h1>
-    <div class="col-md-7 row align-items-center" style="">
-        @using (Html.BeginForm("addListing", "Home", FormMethod.Post, new { @class = "col-md-3 text-center", role = "form", @style = "max-width:150px" }))
-        {
-            <button class="btn btn-light" type="submit" id="addListItem" style="">Add Listing</button>
-        }
-
-        <a class="col-md-2 btn btn-light " href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0) style="max-width:150px">Log Out</a>
-
-
-        @*@using (Html.BeginForm("filterSearch", "Home", FormMethod.Post, new { @class = "col-md-7 text-center row", role = "form"}))
-            {
-                <div class="col-md-5">
-                    <input class="form-control searchText" type="search" placeholder="Search" aria-label="Search" />
-                </div>
-
-                <div class="col-md-4" style="color:white; margin-top:auto; margin-bottom:auto;">
-                    <div class="custom-control custom-radio row">
-                        <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup1" />
-                        <label class="custom-control-label" for="searchGroup1">Users</label>
-                    </div>
-                    <div class="custom-control custom-radio row">
-                        <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup2" />
-                        <label class="custom-control-label" for="searchGroup2">Listings</label>
-                    </div>
-                    <div class="custom-control custom-radio row">
-                        <input type="radio" name="searchGroup" class="custom-control-input" id="searchGroup3" />
-                        <label class="custom-control-label" for="searchGroup3">Modules</label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-light col-md-3">Search</button>
-                @*<a class="col-md-3 btn btn-light" href=@Url.Action(controllerName: "Home", actionName: "filterSearch", routeValues: 0) style="max-width:150px">Search</a>
-            }*@
-        <
-        @using (Html.BeginForm("filterSearch", "Home", FormMethod.Post, new { @class = "col-md-7 text-center row", role = "form" }))
-        {
-            @Html.TextBox("searchCriteria", null, new { style = "placeholder=Search" });
-            <button type="submit" id="btnSubmit" name="Search" class="btn btn-light col-md-3">Search</button>
-        }
-
-
+    <div class="col-md-7 row align-items-center" style="margin:auto">
+        <table class="table table-borderless"  style="margin:auto">
+            <tr>
+                <td>
+                    @using (Html.BeginForm("addListing", "Home", FormMethod.Post, new { @class = "col-md-3 text-center", role = "form", @style = "max-width:150px" }))
+                    {
+                        <button class="btn btn-light" type="submit" id="addListItem" style="margin:auto">Add Listing</button>
+                    }
+                </td>
+                <td>
+                    <a class="col-md-2 btn btn-light " href=@Url.Action(controllerName: "Home", actionName: "Index", routeValues: 0) style="max-width:150px">Log Out</a>
+                </td>
+                <td>
+                    @using (Html.BeginForm("filterSearch", "Home", FormMethod.Post, new { @class = "col-md-7 text-center row", role = "form" }))
+                    {
+                        @Html.TextBox("searchCriteria", null, new { placeholder = "Search", @class = "form-control", @style = "margin: auto" });
+                        <button type="submit" id="btnSubmit" name="Search" class="btn btn-light col-md-3" style="margin:auto">Search</button>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   
+                </td>
+                <td>
+                   
+                </td>
+                <td>
+                    <label style="color: white">Search for a User by Name, a Textbook by Name, or a Module by Module Code</label>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 <div class="row" style="margin:20px">

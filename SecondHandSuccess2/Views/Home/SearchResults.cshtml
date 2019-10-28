@@ -105,21 +105,25 @@
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col" style="border-top:none;">ModuleCode</th>
+                    <th scope="col" style="border-top:none;">Module Code</th>
+                    <th scope="col" style="border-top:none;">Module Name</th>
                     <th scope="col" style="border-top:none;">TextBook Name</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in ViewBag.modules)
                 {
-                    <tr>
-                        <td>
-                            @item.moduleCode
-                        </td>
-                        <td>
-                            @item.BOOK.bookName
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @item.moduleCode
+                    </td>
+                    <td>
+                        @item.Module.moduleName
+                    </td>
+                    <td>
+                        @item.BOOK.bookName
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
