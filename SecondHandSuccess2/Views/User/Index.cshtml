@@ -41,9 +41,7 @@
 
     @foreach (var item in Model)
     {
-        using (Html.BeginForm("Delete", "User", new { id = item.PersonIDNumber}))
-        {
-            @Html.AntiForgeryToken()
+       
 
 <tr class="user-tr">
 
@@ -75,10 +73,16 @@
         @Html.DisplayFor(modelItem => item.PersonRating)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.PersonIDNumber}  ) |
 
-        <input type="submit" value="Remove" onclick=" return confirm('Are you sure you want Remove this user?')"/>
 
+        <a href="~/User/Edit/@item.PersonIDNumber"> Edit </a> | <a href="~/User/Delete/@item.PersonIDNumber"> Remove </a>
+
+        @*@using (Html.BeginForm("Delete", "User", new { id = item.PersonIDNumber }))
+        {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Remove" onclick=" return confirm('Are you sure you want Remove this user?')" />
+        }*@
     </td>
 </tr>
     }

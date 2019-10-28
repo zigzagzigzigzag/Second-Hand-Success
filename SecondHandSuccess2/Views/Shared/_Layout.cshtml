@@ -33,10 +33,21 @@
         </div>
     </div>*@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img class="navbarLogo" src="~/Content/Images/SHS ALT Logo.png" width="50" height="50" >
-
         
-        <a class="navbar-brand" href="~/Home/UserHomePage">Second Hand Success</a>
+            <img src='@Url.Content("~/Content/Images/SHS ALT Logo.png")' width="50" height="50" />
+
+
+        @*@Html.ActionLink("Second Hand Success", "HomePage", "")
+
+        <a href="~/Home/UserHomePage"> <img class="navbarLogo" src="~/Content/Images/SHS ALT Logo.png" width="50" height="50"> </a>*@
+
+        <a class="navbar-brand"><span class="Title">Second Hand Success</span></a>
+
+        <a href='@Url.Action("HomePage", "Home")'>
+            <img src='@Url.Content("~/Content/Images/HomeIcon.png")' width="50" height="50" />
+        </a>
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContext" aria-expanded="false" aria-label="Toogle nav">
             <span class="navbar-toggler-icon"></span>
         </button>

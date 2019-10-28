@@ -195,6 +195,27 @@ namespace SecondHandSuccess2.Controllers
 
             return RedirectToAction("UserHomePage", "Home");
         }
+
+
+        public ActionResult HomePage()
+        {
+                if (Session["CurrentType"].ToString().Equals("Person"))
+                {
+                    return RedirectToAction("UserHomePage", "Home");
+                }
+                else if (Session["CurrentType"].ToString().Equals("Lecturer"))
+                {
+                    return RedirectToAction("LecturerHomePage", "Home");
+                }
+                else if (Session["CurrentType"].ToString().Equals("Admin"))
+                {
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+            
+
+            return RedirectToAction("LogIn", "Home");
+        }
+
         public ActionResult LogOn()
         {
             String uName = Request.Form["PersonUserName"];
@@ -213,14 +234,17 @@ namespace SecondHandSuccess2.Controllers
                         personID = curP.PersonIDNumber;
                         if (curP.PersonType.Equals("Person"))
                         {
+                            Session["CurrentType"] = "Person";
                             return RedirectToAction("UserHomePage", "Home");
                         }
                         else if (curP.PersonType.Equals("Lecturer"))
                         {
+                            Session["CurrentType"] = "Lecturer";
                             return RedirectToAction("LecturerHomePage", "Home");
                         }
                         else if (curP.PersonType.Equals("Admin"))
                         {
+                            Session["CurrentType"] = "Admin";
                             return RedirectToAction("AdminHome", "Admin");
                         }
 
